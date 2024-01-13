@@ -23,6 +23,16 @@
       <height>32</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#playButton {
+	background-color: transparent;
+	background: none;
+	border: none;
+	background-repeat: none;
+	border-image: url(:assets/icon_play_64.png);
+}
+</string>
+    </property>
     <property name="text">
      <string/>
     </property>

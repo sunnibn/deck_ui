@@ -1,8 +1,9 @@
 #ifndef PLAYERWINDOW_H
 #define PLAYERWINDOW_H
 
-#include <QMainWindow>
 #include <string>
+#include <QMainWindow>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,6 +20,9 @@ public:
     ~PlayerWindow();
 
     void setTitle(std::string);
+
+private slots:
+    void on_playButton_clicked();
 
 private:
     Ui::PlayerWindow *ui;

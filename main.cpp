@@ -1,17 +1,20 @@
+#include <string>
+
 #include "playerwindow.h"
 
 #include <QApplication>
-#include <string>
 
-std::string now;
+// global vars
+bool PLAY = false;
+std::string PATH = "";
+std::string FILENAME = "";
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     PlayerWindow w;
 
-    now = "Current File";
-    w.setTitle(now);
+    w.setTitle(FILENAME);
 
 
 

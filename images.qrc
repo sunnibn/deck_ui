@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/icon_play_64.png</file>
+        <file>assets/icon_pause_64.png</file>
+    </qresource>
+</RCC>
