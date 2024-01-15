@@ -2,5 +2,12 @@
     <qresource prefix="/">
         <file>assets/icon_play_64.png</file>
         <file>assets/icon_pause_64.png</file>
+        <file>assets/icon_def_music_64.png</file>
+        <file>assets/icon_left_64.png</file>
+        <file>assets/icon_prev_64.png</file>
+        <file>assets/icon_right_64.png</file>
+        <file>assets/icon_setting_64.png</file>
+        <file>assets/icon_stop_64.png</file>
+        <file>assets/icon_next_64.png</file>
     </qresource>
 </RCC>

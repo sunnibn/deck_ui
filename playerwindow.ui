@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>350</height>
+    <width>340</width>
+    <height>140</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,19 +17,21 @@
    <widget class="QPushButton" name="playButton">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>160</x>
       <y>100</y>
-      <width>32</width>
-      <height>32</height>
+      <width>30</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton#playButton {
-	background-color: transparent;
+	/*background-color: transparent;
 	background: none;
 	border: none;
 	background-repeat: none;
-	border-image: url(:assets/icon_play_64.png);
+	border-radius: 10px;*/
+	/*border-*/
+	image: url(:assets/icon_play_64.png);
 }
 </string>
     </property>
@@ -37,18 +39,187 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="fileButton">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>100</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open File</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="secPrvBtn">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>100</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#secPrvBtn {
+	background-color: transparent;
+	background: none;
+	border: none;
+	background-repeat: none;
+	border-image: url(:assets/icon_left_64.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="secNxtBtn">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>100</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#secNxtBtn {
+	background-color: transparent;
+	background: none;
+	border: none;
+	background-repeat: none;
+	border-image: url(:assets/icon_right_64.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="iconLbl">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#iconLbl {
+	border: 1px solid black
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleLbl">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>240</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#titleLbl {
+	border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="settingBtn">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>10</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#settingBtn {
+	image: url(:/assets/icon_setting_64.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QSlider" name="playSlider">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>300</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider#playSlider::groove:horizontal {
+	height: 8px;
+	background: red;
+	border-radius: 4px;
+}
+QSlider#playSlider::handle:horizontal {
+	background: rgb(52,50,64);
+	width: 8px;
+	height: 8px;
+	margin: -6px, -4px, -4px, -4px;
+	border-radius: 4px;
+}
+/*QSlider#playSlider::handle:hover {
+	width: 12px;
+	margin: -8px, -8px, -4px, -4px;
+}*/</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="time1Lbl">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>40</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>00:00</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="time2Lbl">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>70</y>
+      <width>40</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>00:00</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>350</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

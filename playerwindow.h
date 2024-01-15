@@ -26,5 +26,6 @@ private slots:
 
 private:
     Ui::PlayerWindow *ui;
+    QPixmap iconDefault;
 };
 #endif // PLAYERWINDOW_H
