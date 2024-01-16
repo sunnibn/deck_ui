@@ -4,6 +4,7 @@
 #include <string>
 #include <QMainWindow>
 #include <QPushButton>
+#include <QtMultimedia/QtMultimedia>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,8 +25,13 @@ public:
 private slots:
     void on_playButton_clicked();
 
+    void on_fileButton_clicked();
+
 private:
     Ui::PlayerWindow *ui;
     QPixmap iconDefault;
+
+    QMediaPlayer *mPlayer;
+    QAudioOutput *audioOutput;
 };
 #endif // PLAYERWINDOW_H

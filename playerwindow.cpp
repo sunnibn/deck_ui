@@ -1,9 +1,12 @@
 #include <string>
+#include <iostream> //
 
 #include "playerwindow.h"
 #include "ui_playerwindow.h"
 
 #include <QPushButton>
+#include <QFileDialog>
+#include <QtMultimedia/QtMultimedia>
 
 
 PlayerWindow::PlayerWindow(QWidget *parent)
@@ -19,6 +22,10 @@ PlayerWindow::PlayerWindow(QWidget *parent)
     ui->iconLbl->setPixmap(iconDefault.scaled(w, h, Qt::KeepAspectRatio));
     // init title
     ui->titleLbl->setText("Not selected");
+
+    // init media player
+    mPlayer = new QMediaPlayer();
+    audioOutput = new QAudioOutput();
 
 }
 
@@ -36,10 +43,25 @@ void PlayerWindow::on_playButton_clicked()
     extern bool PLAY;
     if (PLAY) {
         PLAY = false;
+        mPlayer->pause();
         ui->playButton->setStyleSheet("image: url(:assets/icon_play_64.png);");
     } else {
         PLAY = true;
+        mPlayer->play();
         ui->playButton->setStyleSheet("image: url(:assets/icon_pause_64.png);");
     }
+}
+
+
+void PlayerWindow::on_fileButton_clicked()
+{
+    //extern std::string FILE;
+    //extern std::string FILENAME;
+    QString FilePath = QFileDialog::getOpenFileName(this, tr("Select to play"), "", tr("MP3 (*.mp3)"));
+    QFileInfo FileInfo(FilePath);
+    // set playing...
+    ui->titleLbl->setText(FileInfo.fileName());
+    mPlayer->setAudioOutput(audioOutput);
+    mPlayer->setSource(QUrl::fromLocalFile(FileInfo.filePath()));
 }
 
