@@ -27,6 +27,15 @@ PlayerWindow::PlayerWindow(QWidget *parent)
     mPlayer = new QMediaPlayer();
     audioOutput = new QAudioOutput();
 
+    // init volume icon
+    iconDefault.load(":/assets/icon_sound_64.png");
+    w = ui->volIconLbl->width();
+    h = ui->volIconLbl->height();
+    ui->volIconLbl->setPixmap(iconDefault.scaled(w, h, Qt::KeepAspectRatio));
+    // init volume
+    audioVolume = audioOutput->volume();
+    audioOutput->setVolume(audioVolume);
+    ui->volNumLbl->setText(QString::number(int(audioVolume*100)));
 }
 
 PlayerWindow::~PlayerWindow()
@@ -63,5 +72,25 @@ void PlayerWindow::on_fileButton_clicked()
     ui->titleLbl->setText(FileInfo.fileName());
     mPlayer->setAudioOutput(audioOutput);
     mPlayer->setSource(QUrl::fromLocalFile(FileInfo.filePath()));
+}
+
+
+void PlayerWindow::on_volUpBtn_clicked()
+{
+    if (audioVolume < 1.0) {
+        audioVolume += 0.01;
+        audioOutput->setVolume(audioVolume);
+        ui->volNumLbl->setText(QString::number(int(audioVolume*100)));
+    }
+}
+
+
+void PlayerWindow::on_volDownBtn_clicked()
+{
+    if (audioVolume > 0.0) {
+        audioVolume -= 0.01;
+        audioOutput->setVolume(audioVolume);
+        ui->volNumLbl->setText(QString::number(int(audioVolume*100)));
+    }
 }
 

@@ -27,11 +27,16 @@ private slots:
 
     void on_fileButton_clicked();
 
+    void on_volUpBtn_clicked();
+
+    void on_volDownBtn_clicked();
+
 private:
     Ui::PlayerWindow *ui;
     QPixmap iconDefault;
 
     QMediaPlayer *mPlayer;
     QAudioOutput *audioOutput;
+    float audioVolume;
 };
 #endif // PLAYERWINDOW_H

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>340</width>
-    <height>140</height>
+    <height>150</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,7 +43,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>100</y>
+      <y>110</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -63,11 +63,11 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton#secPrvBtn {
-	background-color: transparent;
+	/*background-color: transparent;
 	background: none;
 	border: none;
-	background-repeat: none;
-	border-image: url(:assets/icon_left_64.png);
+	background-repeat: none;*/
+	image: url(:assets/icon_sec_prev_64.png);
 }
 </string>
     </property>
@@ -86,11 +86,11 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton#secNxtBtn {
-	background-color: transparent;
+	/*background-color: transparent;
 	background: none;
 	border: none;
-	background-repeat: none;
-	border-image: url(:assets/icon_right_64.png);
+	background-repeat: none;*/
+	image: url(:assets/icon_sec_next_64.png);
 }
 </string>
     </property>
@@ -115,7 +115,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel#iconLbl {
-	border: 1px solid black
+	border: 1px solid black;
 }</string>
     </property>
     <property name="text">
@@ -217,6 +217,81 @@ QSlider#playSlider::handle:horizontal {
     </property>
     <property name="text">
      <string>00:00</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="volUpBtn">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>90</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#volUpBtn {
+	image: url(:assets/icon_inc_64.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="volDownBtn">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>90</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#volDownBtn {
+	image: url(:assets/icon_dec_64.png);
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="volIconLbl">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#volIconLbl {
+	border: 1px solid black;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="volNumLbl">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>00</string>
     </property>
    </widget>
   </widget>

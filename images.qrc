@@ -9,5 +9,12 @@
         <file>assets/icon_setting_64.png</file>
         <file>assets/icon_stop_64.png</file>
         <file>assets/icon_next_64.png</file>
+        <file>assets/icon_dec_64.png</file>
+        <file>assets/icon_down_64.png</file>
+        <file>assets/icon_inc_64.png</file>
+        <file>assets/icon_sec_next_64.png</file>
+        <file>assets/icon_sec_prev_64.png</file>
+        <file>assets/icon_sound_64.png</file>
+        <file>assets/icon_up_64.png</file>
     </qresource>
 </RCC>
