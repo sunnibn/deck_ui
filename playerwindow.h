@@ -21,6 +21,7 @@ public:
     ~PlayerWindow();
 
     void setTitle(std::string);
+    void setIcon(QString);
 
 private slots:
     void durChange(qint64 duration);
@@ -46,12 +47,5 @@ private slots:
 private:
     Ui::PlayerWindow *ui;
     QPixmap iconDefault;
-
-    QMediaPlayer *mPlayer;
-    QAudioOutput *audioOutput;
-
-    float audioVolume;
-
-    qint64 mDuration;
 };
 #endif // PLAYERWINDOW_H

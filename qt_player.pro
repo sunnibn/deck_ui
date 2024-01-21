@@ -12,10 +12,12 @@ CONFIG += c++17
 SOURCES += \
     clickslider.cpp \
     main.cpp \
+    musicplayer.cpp \
     playerwindow.cpp
 
 HEADERS += \
     clickslider.h \
+    musicplayer.h \
     playerwindow.h
 
 FORMS += \

@@ -121,6 +121,9 @@
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="images.qrc">:/assets/icon_def_music_64.png</pixmap>
+    </property>
    </widget>
    <widget class="QLabel" name="titleLbl">
     <property name="geometry">
@@ -297,6 +300,9 @@ QSlider#playSlider::sub-page:horizontal {
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="images.qrc">:/assets/icon_sound_64.png</pixmap>
+    </property>
    </widget>
    <widget class="QLabel" name="volNumLbl">
     <property name="geometry">
@@ -313,6 +319,8 @@ QSlider#playSlider::sub-page:horizontal {
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>
