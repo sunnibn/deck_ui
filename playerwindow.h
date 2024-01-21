@@ -23,6 +23,9 @@ public:
     void setTitle(std::string);
 
 private slots:
+    void durChange(qint64 duration);
+    void posChange(qint64 position);
+
     void on_playButton_clicked();
 
     void on_fileButton_clicked();
@@ -31,12 +34,24 @@ private slots:
 
     void on_volDownBtn_clicked();
 
+    void on_playSlider_valueChanged(int value);
+    void on_playSlider_sliderPressed();
+    void on_playSlider_sliderMoved(int value);
+    void on_playSlider_sliderReleased();
+
+    void on_secPrvBtn_clicked();
+
+    void on_secNxtBtn_clicked();
+
 private:
     Ui::PlayerWindow *ui;
     QPixmap iconDefault;
 
     QMediaPlayer *mPlayer;
     QAudioOutput *audioOutput;
+
     float audioVolume;
+
+    qint64 mDuration;
 };
 #endif // PLAYERWINDOW_H
