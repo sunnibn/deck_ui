@@ -18,21 +18,15 @@ PlayerWindow::PlayerWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // init player title & icon
+    // init player title
     ui->titleLbl->setText("Not selected");
-    ui->iconLbl->setScaledContents(true);
 
     // init player bar
     connect(MP.mPlayer, &QMediaPlayer::durationChanged, this, &PlayerWindow::durChange);
     connect(MP.mPlayer, &QMediaPlayer::positionChanged, this, &PlayerWindow::posChange);
     // ui->playSlider->setRange(0, MP.mPlayer->duration()/1000);
 
-    // init volume icon
-    // QPixmap icon;
-    // icon.load(":/assets/icon_sound_64.png");
-    // ui->volIconLbl->setPixmap(icon);
-    // init volume & icon
-    ui->volIconLbl->setScaledContents(true);
+    // init volume
     ui->volNumLbl->setText(QString::number(int(MP.audioVolume*100)));
 }
 
@@ -74,11 +68,11 @@ void PlayerWindow::on_playButton_clicked()
     if (MP.playFlag) {
         MP.playFlag = false;
         MP.mPlayer->pause();
-        ui->playButton->setStyleSheet("image: url(:assets/icon_play_64.png);");
+        ui->playButton->setStyleSheet("border-radius: 15px; image: url(:assets/icon_play_64.png);");
     } else {
         MP.playFlag = true;
         MP.mPlayer->play();
-        ui->playButton->setStyleSheet("image: url(:assets/icon_pause_64.png);");
+        ui->playButton->setStyleSheet("border-radius: 15px; image: url(:assets/icon_pause_64.png);");
     }
 }
 
