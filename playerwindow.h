@@ -26,6 +26,7 @@ public:
 private slots:
     void durChange(qint64 duration);
     void posChange(qint64 position);
+    void metaChange();
 
     void on_playButton_clicked();
 

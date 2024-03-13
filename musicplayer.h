@@ -25,6 +25,7 @@ public:
 
     // funcs
     void loadMusic(QString path);
+    void loadMeta();
 };
 
 #endif // MUSICPLAYER_H

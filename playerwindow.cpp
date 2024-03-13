@@ -25,7 +25,7 @@ PlayerWindow::PlayerWindow(QWidget *parent)
     connect(MP.mPlayer, &QMediaPlayer::durationChanged, this, &PlayerWindow::durChange);
     connect(MP.mPlayer, &QMediaPlayer::positionChanged, this, &PlayerWindow::posChange);
     // ui->playSlider->setRange(0, MP.mPlayer->duration()/1000);
-
+    connect(MP.mPlayer, &QMediaPlayer::mediaStatusChanged, this, &PlayerWindow::metaChange);
     // init volume
     ui->volNumLbl->setText(QString::number(int(MP.audioVolume*100)));
 }
@@ -59,6 +59,9 @@ void PlayerWindow::posChange(qint64 position) {     // player pos change -> play
         ui->time1Lbl->setText(currentTime.toString("mm:ss"));
         ui->playSlider->setValue(dur);
     }
+}
+void PlayerWindow::metaChange() {
+    MP.loadMeta();
 }
 
 

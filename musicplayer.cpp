@@ -1,3 +1,4 @@
+#include <iostream>
 #include "musicplayer.h"
 
 MusicPlayer::MusicPlayer() {
@@ -17,4 +18,19 @@ void MusicPlayer::loadMusic(QString path) {
     // set play
     mPlayer->setAudioOutput(audioOutput);
     mPlayer->setSource(QUrl::fromLocalFile(mFile.filePath()));
+    // get metadata
+}
+
+void MusicPlayer::loadMeta() {
+    // std::cout << "load" <<std::endl;
+    QMediaMetaData metaData = mPlayer->metaData();
+    std::cout<< metaData.keys().size() <<std::endl;
+    for(int i=0; i<metaData.keys().size(); i++) {
+        QMediaMetaData::Key mKey = metaData.keys().at(i);
+        QString sKey = QMediaMetaData::metaDataKeyToString(mKey);
+        QVariant mDat = metaData[mKey];
+
+        qDebug() << mKey << mDat.toString();
+        std::cout << sKey.toStdString() << " " << std::endl;
+    }
 }
