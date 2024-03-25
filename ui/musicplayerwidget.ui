@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MusicPlayerWidget</class>
+ <widget class="QWidget" name="MusicPlayerWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>687</width>
+    <height>471</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="titleLayout">
+       <item>
+        <widget class="QLabel" name="iconLabel">
+         <property name="maximumSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel#iconLabel {
+	border: 1px solid lightgray;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../images.qrc">:/assets/icon_def_music_64.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="titleLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>64</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel#titleLabel {
+	border: none;
+	border-bottom: 1px solid lightgray;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="sliderLayout">
+       <item>
+        <widget class="QLabel" name="t1Label">
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>00:00</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="margin">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="t2Label">
+         <property name="text">
+          <string>00:00</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="playerLayout">
+       <item>
+        <widget class="QPushButton" name="secPrevButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#secPrevButton {
+	image: url(:assets/icon_sec_prev_64.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="playButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#playButton {
+	image: url(:assets/icon_play_64.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="secNextButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#secNextButton {
+	image: url(:assets/icon_sec_next_64.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
+ <connections/>
+</ui>

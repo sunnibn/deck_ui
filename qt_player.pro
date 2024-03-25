@@ -14,17 +14,20 @@ SOURCES += \
     deckwindow.cpp \
     main.cpp \
     musicplayer.cpp \
-    playerwindow.cpp
+    playerwindow.cpp \
+    ui/musicplayerwidget.cpp
 
 HEADERS += \
     clickslider.h \
     deckwindow.h \
     musicplayer.h \
-    playerwindow.h
+    playerwindow.h \
+    ui/musicplayerwidget.h
 
 FORMS += \
     deckwindow.ui \
-    playerwindow.ui
+    playerwindow.ui \
+    ui/musicplayerwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -33,3 +36,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     images.qrc
+
+INCLUDEPATH += \
+    ui
