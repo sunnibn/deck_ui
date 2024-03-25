@@ -7,7 +7,6 @@ DeckWindow::DeckWindow(QWidget *parent)
     , ui(new Ui::DeckWindow)
 {
     ui->setupUi(this);
-    // ui->tempWidget->setStyleSheet("QWidget#MusicPlayerWidget{ background: black; }");
 }
 
 DeckWindow::~DeckWindow()

@@ -57,10 +57,18 @@
           <string notr="true">QLabel#titleLabel {
 	border: none;
 	border-bottom: 1px solid lightgray;
+	color: lightgray;
 }</string>
          </property>
          <property name="text">
           <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="fileButton">
+         <property name="text">
+          <string>PushButton</string>
          </property>
         </widget>
        </item>
@@ -72,6 +80,11 @@
         <widget class="QLabel" name="t1Label">
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel#t1Label {
+	color: lightgray;
+}</string>
          </property>
          <property name="text">
           <string>00:00</string>
@@ -85,20 +98,44 @@
         </widget>
        </item>
        <item>
-        <spacer name="horizontalSpacer">
+        <widget class="QSlider" name="playSlider">
+         <property name="styleSheet">
+          <string notr="true">QSlider#playSlider::groove:horizontal {
+height: 8px;
+border: 1px solid lightgray;
+}
+QSlider#playSlider::handle:horizontal {
+background: transparent;
+border: none;
+width: 8px;
+height: 8px;
+margin: -6px -5px -6px -5px;
+}
+/*QSlider#playSlider::handle:hover {
+border: 1px solid lightgray;
+}*/
+
+QSlider#playSlider::add-page:horizontal {
+background: transparent;
+}
+QSlider#playSlider::sub-page:horizontal {
+background: gray;
+border: 1px solid lightgray;
+border-right: none;
+}</string>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="t2Label">
+         <property name="styleSheet">
+          <string notr="true">QLabel#t2Label {
+	color: lightgray;
+}</string>
+         </property>
          <property name="text">
           <string>00:00</string>
          </property>
@@ -108,6 +145,18 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="playerLayout">
+       <item>
+        <widget class="QPushButton" name="prevButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#prevButton {
+	image: url(:assets/icon_prev_64.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QPushButton" name="secPrevButton">
          <property name="styleSheet">
@@ -137,6 +186,18 @@
          <property name="styleSheet">
           <string notr="true">QPushButton#secNextButton {
 	image: url(:assets/icon_sec_next_64.png);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="nextButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton#nextButton {
+	image: url(:assets/icon_next_64.png);
 }</string>
          </property>
          <property name="text">
