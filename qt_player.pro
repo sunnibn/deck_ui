@@ -11,16 +11,19 @@ CONFIG += c++17
 
 SOURCES += \
     clickslider.cpp \
+    deckwindow.cpp \
     main.cpp \
     musicplayer.cpp \
     playerwindow.cpp
 
 HEADERS += \
     clickslider.h \
+    deckwindow.h \
     musicplayer.h \
     playerwindow.h
 
 FORMS += \
+    deckwindow.ui \
     playerwindow.ui
 
 # Default rules for deployment.
