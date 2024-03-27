@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     clickslider.cpp \
     deckwindow.cpp \
+    item/musiclistitem.cpp \
     main.cpp \
     musicplayer.cpp \
     playerwindow.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     clickslider.h \
     deckwindow.h \
+    item/musiclistitem.h \
     musicplayer.h \
     playerwindow.h \
     ui/musicfilesystemwidget.h \
@@ -28,6 +30,7 @@ HEADERS += \
 
 FORMS += \
     deckwindow.ui \
+    item/musiclistitem.ui \
     playerwindow.ui \
     ui/musicfilesystemwidget.ui \
     ui/musicplayerwidget.ui
@@ -41,4 +44,5 @@ RESOURCES += \
     images.qrc
 
 INCLUDEPATH += \
-    ui
+    ui \
+    item \

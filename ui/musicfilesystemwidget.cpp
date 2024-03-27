@@ -2,6 +2,7 @@
 
 #include "musicfilesystemwidget.h"
 #include "ui_musicfilesystemwidget.h"
+#include "item/musiclistitem.h"
 
 #include <QDir>
 
@@ -32,6 +33,9 @@ void MusicFileSystemWidget::setDirectory(QString path) {
 
     foreach(QString filename, files) {
         std::cout << qPrintable(filename) << std::endl;
-        ui->label->setText(filename);
+
+        MusicListItem *mItem = new MusicListItem();
+        mItem->setItem(filename);
+        ui->listLayout->addWidget(mItem);
     }
 }

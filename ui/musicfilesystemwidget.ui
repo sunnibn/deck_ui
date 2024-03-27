@@ -52,20 +52,40 @@
       <layout class="QHBoxLayout" name="folderLayout"/>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="listLayout">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="styleSheet">
-          <string notr="true">QLabel#label {
-	color: lightgray;
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="styleSheet">
+        <string notr="true">QScrollArea {
+	background: transparent;
+}
+QScrollArea&gt;QWidget&gt;QWidget {
+	background: transparent;
+}
+QWidget&gt;QWidget&gt;QScrollBar {
+	background: transparent;
 }</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>392</width>
+          <height>432</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="listLayout"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </item>
     </layout>
    </item>
