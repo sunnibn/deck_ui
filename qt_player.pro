@@ -15,6 +15,7 @@ SOURCES += \
     main.cpp \
     musicplayer.cpp \
     playerwindow.cpp \
+    ui/musicfilesystemwidget.cpp \
     ui/musicplayerwidget.cpp
 
 HEADERS += \
@@ -22,11 +23,13 @@ HEADERS += \
     deckwindow.h \
     musicplayer.h \
     playerwindow.h \
+    ui/musicfilesystemwidget.h \
     ui/musicplayerwidget.h
 
 FORMS += \
     deckwindow.ui \
     playerwindow.ui \
+    ui/musicfilesystemwidget.ui \
     ui/musicplayerwidget.ui
 
 # Default rules for deployment.

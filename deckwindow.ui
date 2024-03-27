@@ -22,10 +22,10 @@
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>70</y>
+      <x>340</x>
+      <y>20</y>
       <width>411</width>
-      <height>331</height>
+      <height>221</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -43,6 +43,30 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>270</y>
+      <width>411</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#widget_2 {
+	border: 1px solid lightgray;
+}</string>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="MusicFileSystemWidget" name="tempWidget_2" native="true">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <customwidgets>
@@ -50,6 +74,12 @@
    <class>MusicPlayerWidget</class>
    <extends>QWidget</extends>
    <header>musicplayerwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MusicFileSystemWidget</class>
+   <extends>QWidget</extends>
+   <header>musicfilesystemwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
