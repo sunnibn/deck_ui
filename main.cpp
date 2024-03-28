@@ -1,8 +1,8 @@
 #include <string>
 
-#include "playerwindow.h"
+// #include "playerwindow.h"
 #include "deckwindow.h"
-#include "musicplayer.h"
+#include "data/musicplayer.h"
 
 #include <QApplication>
 
@@ -12,7 +12,7 @@ MusicPlayer MP;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    PlayerWindow wPlayer;
+    // PlayerWindow wPlayer;
     DeckWindow w;
 
     // w.setTitle("");

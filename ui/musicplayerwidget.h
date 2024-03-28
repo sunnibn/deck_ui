@@ -16,6 +16,7 @@ public:
     ~MusicPlayerWidget();
 
 private slots:
+    void mediaChange();
     void durChange(qint64 duration);
     void posChange(qint64 position);
 

@@ -14,7 +14,7 @@ SOURCES += \
     deckwindow.cpp \
     item/musiclistitem.cpp \
     main.cpp \
-    musicplayer.cpp \
+    data/musicplayer.cpp \
     playerwindow.cpp \
     ui/musicfilesystemwidget.cpp \
     ui/musicplayerwidget.cpp
@@ -23,7 +23,7 @@ HEADERS += \
     clickslider.h \
     deckwindow.h \
     item/musiclistitem.h \
-    musicplayer.h \
+    data/musicplayer.h \
     playerwindow.h \
     ui/musicfilesystemwidget.h \
     ui/musicplayerwidget.h
@@ -46,3 +46,4 @@ RESOURCES += \
 INCLUDEPATH += \
     ui \
     item \
+    data \

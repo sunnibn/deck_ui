@@ -1,7 +1,7 @@
 #include "musicplayerwidget.h"
 #include "ui_musicplayerwidget.h"
 
-#include "musicplayer.h"
+#include "data/musicplayer.h"
 
 #include <QFileDialog>
 #include <QtMultimedia/QtMultimedia>
@@ -19,6 +19,8 @@ MusicPlayerWidget::MusicPlayerWidget(QWidget *parent)
     // init bar
     connect(MP.mPlayer, &QMediaPlayer::durationChanged, this, &MusicPlayerWidget::durChange);
     connect(MP.mPlayer, &QMediaPlayer::positionChanged, this, &MusicPlayerWidget::posChange);
+    // init meta
+    connect(MP.mPlayer, &QMediaPlayer::mediaStatusChanged, this, &MusicPlayerWidget::mediaChange);
 }
 
 MusicPlayerWidget::~MusicPlayerWidget()
@@ -26,8 +28,11 @@ MusicPlayerWidget::~MusicPlayerWidget()
     delete ui;
 }
 
-//=== slider change functions
+//=== change functions - slots connect
 
+void MusicPlayerWidget::mediaChange() {
+    MP.loadMeta();
+}
 void MusicPlayerWidget::durChange(qint64 duration) {    // music player duration change -> affect slider, label.
     qint64 dur = duration/1000;
     if (dur) {
@@ -45,10 +50,10 @@ void MusicPlayerWidget::posChange(qint64 position) {    // music player position
     }
 }
 
-//=== slider functions
+//=== slider slots functions
 
 void MusicPlayerWidget::on_playSlider_valueChanged(int value) {
-    MP.mPlayer->setPosition(value * 1000);   // continuous pausing while changing.
+    MP.mPlayer->setPosition(value * 1000);   // continuous pausing error.
 }
 
 //=== temp file dialog function

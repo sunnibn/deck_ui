@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream> //
 
-#include "musicplayer.h"
+#include "data/musicplayer.h"
 #include "playerwindow.h"
 #include "ui_playerwindow.h"
 #include "clickslider.h"

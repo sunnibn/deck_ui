@@ -18,7 +18,6 @@ void MusicPlayer::loadMusic(QString path) {
     // set play
     mPlayer->setAudioOutput(audioOutput);
     mPlayer->setSource(QUrl::fromLocalFile(mFile.filePath()));
-    // get metadata
 }
 
 void MusicPlayer::loadMeta() {
