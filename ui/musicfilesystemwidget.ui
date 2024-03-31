@@ -81,7 +81,11 @@ QWidget&gt;QWidget&gt;QScrollBar {
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
-          <layout class="QVBoxLayout" name="listLayout"/>
+          <layout class="QVBoxLayout" name="listLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+          </layout>
          </item>
         </layout>
        </widget>

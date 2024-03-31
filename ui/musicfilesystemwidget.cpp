@@ -2,16 +2,20 @@
 
 #include "musicfilesystemwidget.h"
 #include "ui_musicfilesystemwidget.h"
+
+#include "data/musicplayer.h"
 #include "item/musiclistitem.h"
 
 #include <QDir>
+
+extern MusicPlayer MP;
 
 MusicFileSystemWidget::MusicFileSystemWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::MusicFileSystemWidget)
 {
     ui->setupUi(this);
-    this->setDirectory("../storage");
+    this->setDirectory();
 }
 
 MusicFileSystemWidget::~MusicFileSystemWidget()
@@ -19,23 +23,52 @@ MusicFileSystemWidget::~MusicFileSystemWidget()
     delete ui;
 }
 
-//=== file system list display
+//=== current directory in list display
 
-void MusicFileSystemWidget::setDirectory(QString path) {
-    QDir directory(path);
-    ui->pathLabel->setText(directory.currentPath());
-
-    QStringList fileFilter;
-    fileFilter << "*.mp3" << "*.MP3";
-    QStringList files = directory.entryList(fileFilter, QDir::Files);
-    QStringList dirs = directory.entryList(QDir::Dirs);
-    std::cout << files.size() << ' '<< dirs.size() << std::endl;
-
-    foreach(QString filename, files) {
-        std::cout << qPrintable(filename) << std::endl;
-
-        MusicListItem *mItem = new MusicListItem();
-        mItem->setItem(filename);
-        ui->listLayout->addWidget(mItem);
+void MusicFileSystemWidget::setDirectory() {
+    // clear layout first
+    QLayoutItem *child;
+    while ((child = ui->listLayout->takeAt(0)) != nullptr) {
+        delete child->widget();
     }
+    // setup path
+    ui->pathLabel->setText(MP.dirPath);
+    // directories
+    for (int i=0; i<MP.dirList.size(); i++) {
+        MusicListItem *item = new MusicListItem();
+        item->setItem(MP.dirPathList[i], MP.dirList[i], "", i);
+        // connect(item, SIGNAL(clicked()), item, SLOT(selectDirSlot()));
+        connect(item, &QPushButton::clicked, [i, this]() { this->selectDirectory(i); });
+        ui->listLayout->addWidget(item);
+    }
+    // files
+    for (int i=0; i<MP.fileList.size(); i++) {
+        MusicListItem *item = new MusicListItem();
+        item->setItem(MP.filePathList[i], MP.fileList[i], "", i);
+        // connect(item, SIGNAL(clicked()), item, SLOT(selectMusicSlot()));
+        connect(item, &QPushButton::clicked, [i, this]() { this->selectFile(i); });
+        ui->listLayout->addWidget(item);
+    }
+}
+
+//=== slot / slot related functions
+void MusicFileSystemWidget::on_backButton_clicked() {
+    QString path = MP.dirPath + QString("/") + "..";
+    QDir directory(path);
+    MP.loadList(directory.absolutePath());
+    this->setDirectory();
+}
+void MusicFileSystemWidget::selectFile(int idx) {
+    QString path = MP.filePathList[idx];
+    MP.loadMusic(path);
+    MP.fileIdx = idx;
+
+    // std::cout<< idx << std::endl;
+}
+void MusicFileSystemWidget::selectDirectory(int idx) {
+    QString path = MP.dirPathList[idx];
+    MP.loadList(path);
+    this->setDirectory();
+
+    // std::cout<< idx << std::endl;
 }

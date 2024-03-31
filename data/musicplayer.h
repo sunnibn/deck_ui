@@ -10,22 +10,32 @@ public:
     MusicPlayer();
     ~MusicPlayer();
 
-    // vars
+    // player vars
     QMediaPlayer *mPlayer;
-    qint64 mDuration;
-    QFileInfo mFile;
-    bool playFlag = false;
 
     QAudioOutput *audioOutput;
     float audioVolume;
 
-    QString filePath;
-    QString dirPath;
-    QString iconPath = ":/assets/icon_def_music_64.png";
+    // current playing info/status vars
+    QFileInfo mFile;
+    bool playFlag = false;
+    qint64 mDuration;
 
-    // funcs
+    // player directory & file lists vars
+    QString dirPath;
+    QStringList dirList;
+    QStringList dirPathList;
+    QStringList fileList;
+    QStringList filePathList;
+    QStringList iconList;
+
+    int fileIdx;                // current music index. (in file list)
+    QString defaultIcon = ":/assets/icon_def_music_64.png";     // default icon path.
+
+    // loading funcs
     void loadMusic(QString path);
     void loadMeta();
+    void loadList(QString path);
 };
 
 #endif // MUSICPLAYER_H

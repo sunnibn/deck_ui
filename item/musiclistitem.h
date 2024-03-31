@@ -16,15 +16,19 @@ public:
     explicit MusicListItem(QPushButton *parent = nullptr);
     ~MusicListItem();
 
-    void setItem(QString path);
+    void setItem(QString path, QString name, QString icon, int idx);
 
-private slots:
-    void on_MusicListItem_clicked();
+public slots:
+    void selectMusicSlot();
+    void selectDirSlot();
 
 private:
     Ui::MusicListItem *ui;
 
-    bool pressFlag = false;
+    int idx;
+    QString name;
+    QString icon;
+    QString path;
 };
 
 #endif // MUSICLISTITEM_H

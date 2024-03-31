@@ -15,10 +15,16 @@ public:
     explicit MusicFileSystemWidget(QWidget *parent = nullptr);
     ~MusicFileSystemWidget();
 
-    void setDirectory(QString path);
+    void setDirectory();
+
+private slots:
+    void on_backButton_clicked();
 
 private:
     Ui::MusicFileSystemWidget *ui;
+
+    void selectFile(int idx);
+    void selectDirectory(int idx);
 };
 
 #endif // MUSICFILESYSTEMWIDGET_H

@@ -31,7 +31,7 @@ MusicPlayerWidget::~MusicPlayerWidget()
 //=== change functions - slots connect
 
 void MusicPlayerWidget::mediaChange() {
-    MP.loadMeta();
+    // MP.loadMeta();
 }
 void MusicPlayerWidget::durChange(qint64 duration) {    // music player duration change -> affect slider, label.
     qint64 dur = duration/1000;
