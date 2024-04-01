@@ -1,6 +1,5 @@
 #include "deckwindow.h"
 #include "ui_deckwindow.h"
-#include "ui/musicplayerwidget.h"
 
 DeckWindow::DeckWindow(QWidget *parent)
     : QMainWindow(parent)

@@ -16,6 +16,7 @@ SOURCES += \
     main.cpp \
     data/musicplayer.cpp \
     playerwindow.cpp \
+    deck/screenwidget.cpp \
     ui/musicfilesystemwidget.cpp \
     ui/musicplayerwidget.cpp
 
@@ -25,6 +26,7 @@ HEADERS += \
     item/musiclistitem.h \
     data/musicplayer.h \
     playerwindow.h \
+    deck/screenwidget.h \
     ui/musicfilesystemwidget.h \
     ui/musicplayerwidget.h
 
@@ -32,6 +34,7 @@ FORMS += \
     deckwindow.ui \
     item/musiclistitem.ui \
     playerwindow.ui \
+    deck/screenwidget.ui \
     ui/musicfilesystemwidget.ui \
     ui/musicplayerwidget.ui
 
@@ -47,3 +50,4 @@ INCLUDEPATH += \
     ui \
     item \
     data \
+    deck \
