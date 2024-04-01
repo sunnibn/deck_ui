@@ -21,6 +21,9 @@
      </property>
      <item>
       <layout class="QHBoxLayout" name="topLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QPushButton" name="backButton">
          <property name="sizePolicy">
@@ -29,8 +32,36 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#backButton {
+	background: transparent;
+	border: 1px solid lightgray;
+	color: lightgray;
+}
+QPushButton#backButton::hover {
+	background: gray;
+}</string>
+         </property>
          <property name="text">
           <string>&lt;</string>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -38,6 +69,8 @@
         <widget class="QLabel" name="pathLabel">
          <property name="styleSheet">
           <string notr="true">QLabel#pathLabel {
+	background: transparent;
+	border: 1px solid lightgray;
 	color: lightgray;
 }</string>
          </property>
@@ -56,12 +89,14 @@
        <property name="styleSheet">
         <string notr="true">QScrollArea {
 	background: transparent;
+	border: 1px solid lightgray;
 }
 QScrollArea&gt;QWidget&gt;QWidget {
 	background: transparent;
 }
 QWidget&gt;QWidget&gt;QScrollBar {
 	background: transparent;
+	color: lightgray;
 }</string>
        </property>
        <property name="widgetResizable">
@@ -73,13 +108,28 @@ QWidget&gt;QWidget&gt;QScrollBar {
           <x>0</x>
           <y>0</y>
           <width>392</width>
-          <height>432</height>
+          <height>427</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item row="0" column="0">
           <layout class="QVBoxLayout" name="listLayout">
            <property name="spacing">

@@ -38,15 +38,18 @@
       <widget class="QLabel" name="iconLabel">
        <property name="minimumSize">
         <size>
-         <width>64</width>
-         <height>64</height>
+         <width>30</width>
+         <height>30</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>64</width>
-         <height>64</height>
+         <width>60</width>
+         <height>60</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
        </property>
        <property name="text">
         <string/>
@@ -59,6 +62,9 @@
        </property>
        <property name="wordWrap">
         <bool>false</bool>
+       </property>
+       <property name="margin">
+        <number>0</number>
        </property>
       </widget>
      </item>

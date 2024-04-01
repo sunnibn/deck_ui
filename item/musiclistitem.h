@@ -14,13 +14,13 @@ class MusicListItem : public QPushButton
 
 public:
     explicit MusicListItem(QPushButton *parent = nullptr);
+    explicit MusicListItem(QString name, QString icon, QPushButton *parent = nullptr);
     ~MusicListItem();
 
-    void setItem(QString path, QString name, QString icon, int idx);
+    void setItemName(QString name);
+    void setItemIcon(QString icon);
 
-public slots:
-    void selectMusicSlot();
-    void selectDirSlot();
+    void setItemStyle();
 
 private:
     Ui::MusicListItem *ui;

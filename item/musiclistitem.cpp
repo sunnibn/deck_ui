@@ -12,9 +12,17 @@ MusicListItem::MusicListItem(QPushButton *parent)
     , ui(new Ui::MusicListItem)
 {
     ui->setupUi(this);
-    this->setStyleSheet("height: 64; background: transparent; border: 1px solid lightgray;");
-    ui->iconLabel->setStyleSheet("");
-    ui->titleLabel->setStyleSheet("color: lightgray;");
+    this->setItemStyle();
+}
+
+MusicListItem::MusicListItem(QString name, QString icon, QPushButton *parent)
+    : QPushButton(parent)
+    , ui(new Ui::MusicListItem)
+{
+    ui->setupUi(this);
+    this->setItemStyle();
+    this->setItemName(name);
+    this->setItemIcon(icon);
 }
 
 MusicListItem::~MusicListItem()
@@ -24,25 +32,19 @@ MusicListItem::~MusicListItem()
 
 //=== setup music file item.
 
-void MusicListItem::setItem(QString path, QString name, QString icon, int idx) {
-    this->idx = idx;
-    this->path = path;
+void MusicListItem::setItemName(QString name) {
     this->name = name;
-    this->icon = icon;
     ui->titleLabel->setText(name);
 }
-
-//=== slot functions
-void MusicListItem::selectMusicSlot() {
-    // std::cout << qPrintable(path) <<std::endl;
-    MP.loadMusic(path);
-    // release previous music (if there is)
-
-    // hold new selected music
-    MP.fileIdx = idx;
-    std::cout << idx << std::endl;
+void MusicListItem::setItemIcon(QString icon) {
+    this->icon = icon;
 }
-void MusicListItem::selectDirSlot() {
-    MP.loadList(path);
-    std::cout << qPrintable(path) << std::endl;
+
+//=== setup item style.
+
+void MusicListItem::setItemStyle() {
+    this->setStyleSheet("QPushButton#MusicListItem {height: 64; background: transparent; border: 1px solid lightgray; border-bottom: none;}"
+                        "QPushButton#MusicListItem::hover {background: gray;}");
+    ui->iconLabel->setStyleSheet("margin: 10; border: 1px solid lightgray;");
+    ui->titleLabel->setStyleSheet("color: lightgray;");
 }

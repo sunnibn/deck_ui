@@ -35,17 +35,13 @@ void MusicFileSystemWidget::setDirectory() {
     ui->pathLabel->setText(MP.dirPath);
     // directories
     for (int i=0; i<MP.dirList.size(); i++) {
-        MusicListItem *item = new MusicListItem();
-        item->setItem(MP.dirPathList[i], MP.dirList[i], "", i);
-        // connect(item, SIGNAL(clicked()), item, SLOT(selectDirSlot()));
+        MusicListItem *item = new MusicListItem(MP.dirList[i], "");
         connect(item, &QPushButton::clicked, [i, this]() { this->selectDirectory(i); });
         ui->listLayout->addWidget(item);
     }
     // files
     for (int i=0; i<MP.fileList.size(); i++) {
-        MusicListItem *item = new MusicListItem();
-        item->setItem(MP.filePathList[i], MP.fileList[i], "", i);
-        // connect(item, SIGNAL(clicked()), item, SLOT(selectMusicSlot()));
+        MusicListItem *item = new MusicListItem(MP.fileList[i], MP.iconList[i]);
         connect(item, &QPushButton::clicked, [i, this]() { this->selectFile(i); });
         ui->listLayout->addWidget(item);
     }
