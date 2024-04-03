@@ -14,8 +14,10 @@ ScreenWidget::ScreenWidget(QWidget *parent)
     , ui(new Ui::ScreenWidget)
 {
     ui->setupUi(this);
-    ui->widget->setStyleSheet("border: 1px solid lightgray; background: transparent;");
-    screenDisplay(MUSIC_PLAYER_1);
+    ui->widget->setStyleSheet("border: 1px solid lightgray; background: black;");
+    btn = new QPushButton(this);
+    bar = new ScreenBar(this);
+
     screenResizable(true);
 }
 
@@ -25,6 +27,9 @@ ScreenWidget::ScreenWidget(int displayNo, QWidget *parent)
 {
     ui->setupUi(this);
     ui->widget->setStyleSheet("border: 1px solid lightgray; background: black;");
+    btn = new QPushButton(this);
+    bar = new ScreenBar(this);
+
     screenDisplay(displayNo);
     screenResizable(true);
 }
@@ -39,8 +44,6 @@ ScreenWidget::~ScreenWidget()
 bool ScreenWidget::eventFilter(QObject *o, QEvent *e) {
     if (o == btn) {
         QMouseEvent *mE = static_cast<QMouseEvent*>(e);
-        // std::cout<< e->type() << std::endl;
-
         switch(e->type()) {
         case QEvent::MouseButtonPress:
             if (mE->button() == Qt::LeftButton) {
@@ -48,20 +51,16 @@ bool ScreenWidget::eventFilter(QObject *o, QEvent *e) {
                 ph = this->height();
                 px = mE->scenePosition().x();
                 py = mE->scenePosition().y();
-                // std::cout << px << ' ' << py  << std::endl;
-                // std::cout << "pressed" << std::endl;
             }
             break;
         case QEvent::MouseMove:
             x = mE->scenePosition().x();
             y = mE->scenePosition().y();
-            // std::cout << x << ' ' << y  << std::endl;
             this->resize(pw + x-px, ph + y-py);
             break;
         case QEvent::MouseButtonRelease:
             if (mE->button() == Qt::LeftButton) {
                 this->resize(pw + x-px, ph + y-py);
-                // std::cout << "released" << std::endl;
             }
             break;
         }
@@ -71,18 +70,14 @@ bool ScreenWidget::eventFilter(QObject *o, QEvent *e) {
 
 void ScreenWidget::screenResizable(bool enable) {
     if (enable) {
-        // grip = new QSizeGrip(thism);
-        // grip->installEventFilter(this);
-        btn = new QPushButton(this);
         btn->installEventFilter(this);
-
         // this->setWindowFlags(Qt::SubWindow);
-        // grip->setStyleSheet("margin: 10;");
-        // ui->gridLayout->addWidget(grip, 0,0,1,1, Qt::AlignBottom | Qt::AlignRight);
         btn->setStyleSheet("width:20; height:20; border:1px solid lightgray; background: gray; margin:20;");
         ui->gridLayout->addWidget(btn, 0,0,1,1, Qt::AlignBottom | Qt::AlignRight);
+        ui->gridLayout->addWidget(bar, 0,0,1,1, Qt::AlignBottom);
     } else {
         // this->setWindowFlags(Qt::Widget);
+        bar->hide();
     }
 }
 

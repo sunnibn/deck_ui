@@ -7,6 +7,8 @@
 #include <QMouseEvent>
 #include <QPushButton>
 
+#include "deck/screenbar.h"
+
 enum UiDisplay {
     MUSIC_PLAYER_1,
     MUSIC_LIST_1,
@@ -29,7 +31,7 @@ public:
     void screenDisplay(int displayNum);
 
 protected:
-    bool eventFilter(QObject *watched, QEvent *event);
+    bool eventFilter(QObject *o, QEvent *e);
 
 private:
     Ui::ScreenWidget *ui;
@@ -37,6 +39,7 @@ private:
     int pw, ph, px, py, x, y;
     // QSizeGrip *grip;
     QPushButton *btn;
+    ScreenBar *bar;
 };
 
 #endif // SCREENWIDGET_H

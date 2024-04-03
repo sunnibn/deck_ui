@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     clickslider.cpp \
+    deck/screenbar.cpp \
     deckwindow.cpp \
     item/musiclistitem.cpp \
     main.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     clickslider.h \
+    deck/screenbar.h \
     deckwindow.h \
     item/musiclistitem.h \
     data/musicplayer.h \
@@ -31,6 +33,7 @@ HEADERS += \
     ui/musicplayerwidget.h
 
 FORMS += \
+    deck/screenbar.ui \
     deckwindow.ui \
     item/musiclistitem.ui \
     playerwindow.ui \
