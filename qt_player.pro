@@ -10,34 +10,35 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    clickslider.cpp \
+    deck/deckwindow.cpp \
     deck/screenbar.cpp \
-    deckwindow.cpp \
+    deck/screenwidget.cpp \
+    item/clickslider.cpp \
     item/musiclistitem.cpp \
     main.cpp \
     data/musicplayer.cpp \
     playerwindow.cpp \
-    deck/screenwidget.cpp \
     ui/musicfilesystemwidget.cpp \
     ui/musicplayerwidget.cpp
 
 HEADERS += \
-    clickslider.h \
+    deck/deckwindow.h \
     deck/screenbar.h \
-    deckwindow.h \
+    deck/screenwidget.h \
+    item/clickslider.h \
     item/musiclistitem.h \
     data/musicplayer.h \
     playerwindow.h \
-    deck/screenwidget.h \
     ui/musicfilesystemwidget.h \
     ui/musicplayerwidget.h
 
 FORMS += \
+    deck/deckwindow.ui \
     deck/screenbar.ui \
-    deckwindow.ui \
+    deck/screenwidget.ui \
+    item/clickslider.ui \
     item/musiclistitem.ui \
     playerwindow.ui \
-    deck/screenwidget.ui \
     ui/musicfilesystemwidget.ui \
     ui/musicplayerwidget.ui
 

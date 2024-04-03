@@ -1,7 +1,7 @@
 #include <string>
 
 // #include "playerwindow.h"
-#include "deckwindow.h"
+#include "deck/deckwindow.h"
 #include "data/musicplayer.h"
 
 #include <QApplication>

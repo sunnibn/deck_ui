@@ -98,7 +98,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QSlider" name="playSlider">
+        <widget class="ClickSlider" name="playSlider">
          <property name="styleSheet">
           <string notr="true">QSlider#playSlider::groove:horizontal {
 height: 8px;
@@ -211,6 +211,13 @@ border-right: none;
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ClickSlider</class>
+   <extends>QSlider</extends>
+   <header>clickslider.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../images.qrc"/>
  </resources>

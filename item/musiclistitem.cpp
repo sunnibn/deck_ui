@@ -7,7 +7,7 @@
 
 extern MusicPlayer MP;
 
-MusicListItem::MusicListItem(QPushButton *parent)
+MusicListItem::MusicListItem(QWidget *parent)
     : QPushButton(parent)
     , ui(new Ui::MusicListItem)
 {
@@ -15,7 +15,7 @@ MusicListItem::MusicListItem(QPushButton *parent)
     this->setItemStyle();
 }
 
-MusicListItem::MusicListItem(QString name, QString icon, QPushButton *parent)
+MusicListItem::MusicListItem(QString name, QString icon, QWidget *parent)
     : QPushButton(parent)
     , ui(new Ui::MusicListItem)
 {

@@ -2,6 +2,7 @@
 #include "ui_musicplayerwidget.h"
 
 #include "data/musicplayer.h"
+#include "clickslider.h"
 
 #include <QFileDialog>
 #include <QtMultimedia/QtMultimedia>

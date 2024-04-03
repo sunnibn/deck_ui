@@ -1,16 +1,16 @@
 #include "clickslider.h"
-
-#include <QMouseEvent>
+#include "ui_clickslider.h"
 
 ClickSlider::ClickSlider(QWidget *parent)
     : QSlider(parent)
+    , ui(new Ui::ClickSlider)
 {
-
+    ui->setupUi(this);
 }
 
 ClickSlider::~ClickSlider()
 {
-
+    delete ui;
 }
 
 void ClickSlider::mousePressEvent(QMouseEvent *ev) {

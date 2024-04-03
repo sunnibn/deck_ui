@@ -13,8 +13,8 @@ class MusicListItem : public QPushButton
     Q_OBJECT
 
 public:
-    explicit MusicListItem(QPushButton *parent = nullptr);
-    explicit MusicListItem(QString name, QString icon, QPushButton *parent = nullptr);
+    explicit MusicListItem(QWidget *parent = nullptr);
+    explicit MusicListItem(QString name, QString icon, QWidget *parent = nullptr);
     ~MusicListItem();
 
     void setItemName(QString name);
