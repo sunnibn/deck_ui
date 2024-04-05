@@ -21,7 +21,7 @@ ScreenWidget::ScreenWidget(QWidget *parent)
     screenResizable(true);
 }
 
-ScreenWidget::ScreenWidget(int displayNo, QWidget *parent)
+ScreenWidget::ScreenWidget(int displayNo, int x, int y, int w, int h, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::ScreenWidget)
 {
@@ -29,6 +29,8 @@ ScreenWidget::ScreenWidget(int displayNo, QWidget *parent)
     ui->widget->setStyleSheet("border: 1px solid lightgray; background: black;");
     btn = new QPushButton(this);
     bar = new ScreenBar(this);
+    this->move(x, y);
+    this->resize(w, h);
 
     screenDisplay(displayNo);
     screenResizable(true);

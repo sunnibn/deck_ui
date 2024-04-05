@@ -24,7 +24,7 @@ class ScreenWidget : public QWidget
 
 public:
     explicit ScreenWidget(QWidget *parent = nullptr);
-    explicit ScreenWidget(int displayNo, QWidget *parent = nullptr);
+    explicit ScreenWidget(int displayNo, int x, int y, int w, int h, QWidget *parent = nullptr);
     ~ScreenWidget();
 
     void screenResizable(bool enable);
