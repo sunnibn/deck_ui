@@ -19,79 +19,50 @@
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>20</y>
-      <width>411</width>
-      <height>221</height>
-     </rect>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QWidget#widget {
-	border: 1px solid lightgray;
-}</string>
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="MusicPlayerWidget" name="tempWidget" native="true">
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="widget_2" native="true">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>270</y>
-      <width>411</width>
-      <height>321</height>
-     </rect>
+    <property name="topMargin">
+     <number>0</number>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QWidget#widget_2 {
-	border: 1px solid lightgray;
-}</string>
+    <property name="rightMargin">
+     <number>0</number>
     </property>
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0">
-      <widget class="MusicFileSystemWidget" name="tempWidget_2" native="true">
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QPushButton" name="settingButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>600</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
+    <property name="bottomMargin">
+     <number>0</number>
     </property>
-    <property name="text">
-     <string>Setting</string>
-    </property>
-   </widget>
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="DeckBar" name="bar" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MusicPlayerWidget</class>
+   <class>DeckBar</class>
    <extends>QWidget</extends>
-   <header>musicplayerwidget.h</header>
-  </customwidget>
-  <customwidget>
-   <class>MusicFileSystemWidget</class>
-   <extends>QWidget</extends>
-   <header>musicfilesystemwidget.h</header>
+   <header>deckbar.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

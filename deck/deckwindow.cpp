@@ -1,11 +1,6 @@
 #include "deckwindow.h"
 #include "ui_deckwindow.h"
 
-#include "deck/screenwidget.h"
-#include "data/decksetting.h"
-
-extern DeckSetting DECK_CONF;
-
 DeckWindow::DeckWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::DeckWindow)
@@ -13,7 +8,6 @@ DeckWindow::DeckWindow(QWidget *parent)
     ui->setupUi(this);
 
     DECK_CONF.deckConfigRead();
-    connect(ui->settingButton, &QPushButton::clicked, [](){ DECK_CONF.deckConfigWrite(); });
 
     for (int i=0; i < DECK_CONF.screens.size(); i++) {
         ScreenData d = DECK_CONF.screens[i];

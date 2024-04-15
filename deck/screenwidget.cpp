@@ -4,7 +4,6 @@
 #include "ui_screenwidget.h"
 
 #include <QVBoxLayout>
-// #include <QSizeGrip>
 
 #include "ui/musicplayerwidget.h"
 #include "ui/musicfilesystemwidget.h"
@@ -15,10 +14,10 @@ ScreenWidget::ScreenWidget(QWidget *parent)
 {
     ui->setupUi(this);
     ui->widget->setStyleSheet("border: 1px solid lightgray; background: black;");
-    btn = new QPushButton(this);
     bar = new ScreenBar(this);
+    ui->gridLayout->addWidget(bar, 0,0,1,1, Qt::AlignBottom);
 
-    screenResizable(true);
+    screenResizable(false);
 }
 
 ScreenWidget::ScreenWidget(int displayNo, int x, int y, int w, int h, QWidget *parent)
@@ -27,13 +26,13 @@ ScreenWidget::ScreenWidget(int displayNo, int x, int y, int w, int h, QWidget *p
 {
     ui->setupUi(this);
     ui->widget->setStyleSheet("border: 1px solid lightgray; background: black;");
-    btn = new QPushButton(this);
-    bar = new ScreenBar(this);
     this->move(x, y);
     this->resize(w, h);
+    bar = new ScreenBar(this);
+    ui->gridLayout->addWidget(bar, 0,0,1,1, Qt::AlignBottom);
 
     screenDisplay(displayNo);
-    screenResizable(true);
+    screenResizable(false);
 }
 
 ScreenWidget::~ScreenWidget()
@@ -43,40 +42,10 @@ ScreenWidget::~ScreenWidget()
 
 //=== screen display functions
 
-bool ScreenWidget::eventFilter(QObject *o, QEvent *e) {
-    if (o == btn) {
-        QMouseEvent *mE = static_cast<QMouseEvent*>(e);
-        switch(e->type()) {
-        case QEvent::MouseButtonPress:
-            if (mE->button() == Qt::LeftButton) {
-                pw = this->width();
-                ph = this->height();
-                px = mE->scenePosition().x();
-                py = mE->scenePosition().y();
-            }
-            break;
-        case QEvent::MouseMove:
-            x = mE->scenePosition().x();
-            y = mE->scenePosition().y();
-            this->resize(pw + x-px, ph + y-py);
-            break;
-        case QEvent::MouseButtonRelease:
-            if (mE->button() == Qt::LeftButton) {
-                this->resize(pw + x-px, ph + y-py);
-            }
-            break;
-        }
-    }
-    return QWidget::eventFilter(o, e);
-}
-
 void ScreenWidget::screenResizable(bool enable) {
     if (enable) {
-        btn->installEventFilter(this);
         // this->setWindowFlags(Qt::SubWindow);
-        btn->setStyleSheet("width:20; height:20; border:1px solid lightgray; background: gray; margin:20;");
-        ui->gridLayout->addWidget(btn, 0,0,1,1, Qt::AlignBottom | Qt::AlignRight);
-        ui->gridLayout->addWidget(bar, 0,0,1,1, Qt::AlignBottom);
+        bar->show();
     } else {
         // this->setWindowFlags(Qt::Widget);
         bar->hide();

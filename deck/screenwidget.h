@@ -30,15 +30,10 @@ public:
     void screenResizable(bool enable);
     void screenDisplay(int displayNum);
 
-protected:
-    bool eventFilter(QObject *o, QEvent *e);
-
 private:
     Ui::ScreenWidget *ui;
 
     int pw, ph, px, py, x, y;
-    // QSizeGrip *grip;
-    QPushButton *btn;
     ScreenBar *bar;
 };
 

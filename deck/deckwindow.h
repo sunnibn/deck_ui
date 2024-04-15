@@ -3,6 +3,12 @@
 
 #include <QMainWindow>
 
+#include <vector>
+#include "deck/screenwidget.h"
+#include "data/decksetting.h"
+
+extern DeckSetting DECK_CONF;
+
 namespace Ui {
 class DeckWindow;
 }
