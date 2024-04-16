@@ -7,11 +7,18 @@
 #include <QFile>
 #include <QTextStream>
 
-struct ScreenData {
-    int displayNo;
-    int x, y, w, h;
-    int idx;
+struct InstData {       // instance data
+    int type;
 };
+struct DisplayData {    // each displays on screen
+    int x, y, w, h;
+};
+struct ScreenData {     // screen to show on deck
+    QString path;
+    bool active;
+    std::vector<DisplayData> displays;
+};
+
 
 class DeckSetting
 {
@@ -19,14 +26,21 @@ public:
     DeckSetting();
     ~DeckSetting();
 
-    QDir *configDir;
-    QFile *deckConfig;
-    QFile *musicConfig;
-
+    int currScreenIdx;
     std::vector<ScreenData> screens;
+
+
+    void configDirectory();
 
     void deckConfigRead();
     void deckConfigWrite();
+    void screenFileRead(QString filePath, ScreenData *s);
+    void screenFileWrite(int screenIdx);
+
+    void addScreenData();
+    void delScreenData();
+    void addDisplayData();
+    void delDisplayData();
 };
 
 #endif // DECKSETTING_H

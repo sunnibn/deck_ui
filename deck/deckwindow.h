@@ -7,6 +7,7 @@
 #include "deck/screenwidget.h"
 #include "data/decksetting.h"
 
+extern DeckSetting CONFIG;
 extern DeckSetting DECK_CONF;
 
 namespace Ui {
@@ -20,6 +21,8 @@ class DeckWindow : public QMainWindow
 public:
     explicit DeckWindow(QWidget *parent = nullptr);
     ~DeckWindow();
+
+    void renderScreen(int screenIdx);
 
 private:
     Ui::DeckWindow *ui;

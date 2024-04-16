@@ -7,6 +7,7 @@
 
 // global vars
 DeckSetting DECK_CONF;
+DeckSetting CONFIG;
 MusicPlayer MP;
 
 int main(int argc, char *argv[])
