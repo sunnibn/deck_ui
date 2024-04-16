@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+#include <iostream>
 #include <vector>
 #include "deck/screenwidget.h"
 #include "data/decksetting.h"
@@ -21,6 +22,8 @@ class DeckWindow : public QMainWindow
 public:
     explicit DeckWindow(QWidget *parent = nullptr);
     ~DeckWindow();
+
+    std::vector<ScreenWidget*> SW;
 
     void renderScreen(int screenIdx);
 

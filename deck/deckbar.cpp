@@ -76,6 +76,11 @@ void DeckBar::editBtnClick() {
     addDisplayBtn->setVisible(true);
     editSaveBtn->setVisible(true);
     editQuitBtn->setVisible(true);
+
+    std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
+    for (int i=0; i < SW.size(); i++) {
+        SW[i]->screenResizable(true);
+    }
 }
 void DeckBar::addScreenBtnClick() {
     CONFIG.addScreenData();
@@ -85,7 +90,12 @@ void DeckBar::delScreenBtnClick() {
 
 }
 void DeckBar::addDisplayBtnClick() {
-
+    CONFIG.addDisplayData(0);
+    ((DeckWindow*)this->parent()->parent())->renderScreen(0);
+    std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
+    for (int i=0; i < SW.size(); i++) {
+        SW[i]->screenResizable(true);
+    }
 }
 void DeckBar::editSaveBtnClick() {
 
@@ -97,4 +107,9 @@ void DeckBar::editQuitBtnClick() {
     addDisplayBtn->setVisible(false);
     editSaveBtn->setVisible(false);
     editQuitBtn->setVisible(false);
+
+    std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
+    for (int i=0; i < SW.size(); i++) {
+        SW[i]->screenResizable(false);
+    }
 }

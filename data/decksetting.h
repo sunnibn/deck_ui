@@ -38,9 +38,9 @@ public:
     void screenFileWrite(int screenIdx);
 
     void addScreenData();
-    void delScreenData();
-    void addDisplayData();
-    void delDisplayData();
+    void delScreenData(int screenIdx);
+    void addDisplayData(int screenIdx);
+    void delDisplayData(int screenIdx, int displayIdx);
 };
 
 #endif // DECKSETTING_H
