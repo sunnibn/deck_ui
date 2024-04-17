@@ -26,11 +26,11 @@ void DeckConfigBar::on_exitBtn_clicked() {
     emit userModeSignal();
 }
 void DeckConfigBar::on_addScreenBtn_clicked() {
-    CONFIG.addScreenData();
+
 }
 void DeckConfigBar::on_delScreenBtn_clicked() {
 
 }
 void DeckConfigBar::on_addDisplayBtn_clicked() {
-    CONFIG.addDisplayData(0);
+
 }

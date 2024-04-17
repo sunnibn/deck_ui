@@ -12,7 +12,12 @@ CONFIG += c++17
 SOURCES += \
     data/decksetting.cpp \
     deck/deck_config/deckconfigbar.cpp \
-    deck/deckbar.cpp \
+    deck/deck_config/deckconfigdisplay.cpp \
+    deck/deck_config/deckconfigdisplaybar.cpp \
+    deck/deck_config/deckconfigscreen.cpp \
+    deck/deck_default/deckbar.cpp \
+    deck/deck_default/deckdisplay.cpp \
+    deck/deck_default/deckscreen.cpp \
     deck/deckwindow.cpp \
     deck/screenbar.cpp \
     deck/screenwidget.cpp \
@@ -27,7 +32,12 @@ SOURCES += \
 HEADERS += \
     data/decksetting.h \
     deck/deck_config/deckconfigbar.h \
-    deck/deckbar.h \
+    deck/deck_config/deckconfigdisplay.h \
+    deck/deck_config/deckconfigdisplaybar.h \
+    deck/deck_config/deckconfigscreen.h \
+    deck/deck_default/deckbar.h \
+    deck/deck_default/deckdisplay.h \
+    deck/deck_default/deckscreen.h \
     deck/deckwindow.h \
     deck/screenbar.h \
     deck/screenwidget.h \
@@ -36,11 +46,17 @@ HEADERS += \
     data/musicplayer.h \
     playerwindow.h \
     ui/musicfilesystemwidget.h \
-    ui/musicplayerwidget.h
+    ui/musicplayerwidget.h \
+    ui/ui.h
 
 FORMS += \
     deck/deck_config/deckconfigbar.ui \
-    deck/deckbar.ui \
+    deck/deck_config/deckconfigdisplay.ui \
+    deck/deck_config/deckconfigdisplaybar.ui \
+    deck/deck_config/deckconfigscreen.ui \
+    deck/deck_default/deckbar.ui \
+    deck/deck_default/deckdisplay.ui \
+    deck/deck_default/deckscreen.ui \
     deck/deckwindow.ui \
     deck/screenbar.ui \
     deck/screenwidget.ui \
@@ -64,3 +80,4 @@ INCLUDEPATH += \
     data \
     deck \
     deck/deck_config \
+    deck/deck_default \

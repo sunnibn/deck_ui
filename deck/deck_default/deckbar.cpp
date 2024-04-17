@@ -117,6 +117,5 @@ void DeckBar::editQuitBtnClick() {
 
 //=== button slot functions
 void DeckBar::on_editBtn_clicked() {
-    std::cout << "to edit"<<std::endl;
     emit editModeSignal();
 }
