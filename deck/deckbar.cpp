@@ -14,7 +14,7 @@ DeckBar::DeckBar(QWidget *parent)
 {
     ui->setupUi(this);
     this->setStyleSheet("background: black; border: 1px solid lightgray; color: lightgray;");
-    initDeckBar();
+    //initDeckBar();
 }
 
 DeckBar::~DeckBar()
@@ -77,25 +77,25 @@ void DeckBar::editBtnClick() {
     editSaveBtn->setVisible(true);
     editQuitBtn->setVisible(true);
 
-    std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
-    for (int i=0; i < SW.size(); i++) {
-        SW[i]->screenResizable(true);
-    }
+    // std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
+    // for (int i=0; i < SW.size(); i++) {
+    //     SW[i]->screenResizable(true);
+    // }
 }
 void DeckBar::addScreenBtnClick() {
     CONFIG.addScreenData();
-    ((DeckWindow*)this->parent()->parent())->renderScreen(0);
+    // ((DeckWindow*)this->parent()->parent())->renderScreen(0);
 }
 void DeckBar::delScreenBtnClick() {
 
 }
 void DeckBar::addDisplayBtnClick() {
     CONFIG.addDisplayData(0);
-    ((DeckWindow*)this->parent()->parent())->renderScreen(0);
-    std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
-    for (int i=0; i < SW.size(); i++) {
-        SW[i]->screenResizable(true);
-    }
+    // ((DeckWindow*)this->parent()->parent())->renderScreen(0);
+    // std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
+    // for (int i=0; i < SW.size(); i++) {
+    //     SW[i]->screenResizable(true);
+    // }
 }
 void DeckBar::editSaveBtnClick() {
 
@@ -108,8 +108,15 @@ void DeckBar::editQuitBtnClick() {
     editSaveBtn->setVisible(false);
     editQuitBtn->setVisible(false);
 
-    std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
-    for (int i=0; i < SW.size(); i++) {
-        SW[i]->screenResizable(false);
-    }
+    //((DeckWindow*)this->parent()->parent())->renderScreen(0);
+    // std::vector<ScreenWidget*> SW = ((DeckWindow*)this->parent()->parent())->SW;
+    // for (int i=0; i < SW.size(); i++) {
+    //     SW[i]->screenResizable(false);
+    // }
+}
+
+//=== button slot functions
+void DeckBar::on_editBtn_clicked() {
+    std::cout << "to edit"<<std::endl;
+    emit editModeSignal();
 }

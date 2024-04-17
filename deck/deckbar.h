@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
-#include <deck/deckwindow.h>
+// #include <deck/deckwindow.h>
 
 namespace Ui {
 class DeckBar;
@@ -26,6 +26,12 @@ public:
     void addDisplayBtnClick();
     void editSaveBtnClick();
     void editQuitBtnClick();
+
+signals:
+    void editModeSignal();
+
+private slots:
+    void on_editBtn_clicked();
 
 private:
     Ui::DeckBar *ui;

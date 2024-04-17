@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 #include "deck/screenwidget.h"
+#include "deck/deckbar.h"
+#include "deck/deck_config/deckconfigbar.h"
 #include "data/decksetting.h"
 
 extern DeckSetting CONFIG;
@@ -24,7 +26,10 @@ public:
     ~DeckWindow();
 
     std::vector<ScreenWidget*> SW;
+    DeckBar *deckBar;
+    DeckConfigBar *deckConfigBar;
 
+    void renderBar(int barNo);
     void renderScreen(int screenIdx);
 
 private:

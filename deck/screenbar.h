@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QEvent>
 #include <QMouseEvent>
+#include <data/decksetting.h>
+
+extern DeckSetting CONFIG;
 
 namespace Ui {
 class ScreenBar;
@@ -16,6 +19,9 @@ class ScreenBar : public QWidget
 public:
     explicit ScreenBar(QWidget *parent = nullptr);
     ~ScreenBar();
+
+    int screenIdx;
+    int displayIdx;
 
 protected:
     bool eventFilter(QObject *o, QEvent *e);

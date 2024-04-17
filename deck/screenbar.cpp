@@ -74,7 +74,9 @@ bool ScreenBar::eventFilter(QObject *o, QEvent *e) {
 //=== bar buttons click slots
 
 void ScreenBar::on_removeButton_clicked() {
-
+    CONFIG.delDisplayData(screenIdx, displayIdx);
+    //delete this->parent();
+    //std::cout << qPrintable(this->parent()->parent()->objectName());
 }
 void ScreenBar::on_settingButton_clicked() {
 

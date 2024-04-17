@@ -27,14 +27,16 @@ public:
     explicit ScreenWidget(int displayNo, int x, int y, int w, int h, QWidget *parent = nullptr);
     ~ScreenWidget();
 
+    int screenIdx;
+    int displayIdx;
+
+    ScreenBar *bar;
+
     void screenResizable(bool enable);
     void screenDisplay(int displayNum);
 
 private:
     Ui::ScreenWidget *ui;
-
-    int pw, ph, px, py, x, y;
-    ScreenBar *bar;
 };
 
 #endif // SCREENWIDGET_H

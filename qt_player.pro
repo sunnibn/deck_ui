@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     data/decksetting.cpp \
+    deck/deck_config/deckconfigbar.cpp \
     deck/deckbar.cpp \
     deck/deckwindow.cpp \
     deck/screenbar.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
     data/decksetting.h \
+    deck/deck_config/deckconfigbar.h \
     deck/deckbar.h \
     deck/deckwindow.h \
     deck/screenbar.h \
@@ -37,6 +39,7 @@ HEADERS += \
     ui/musicplayerwidget.h
 
 FORMS += \
+    deck/deck_config/deckconfigbar.ui \
     deck/deckbar.ui \
     deck/deckwindow.ui \
     deck/screenbar.ui \
@@ -60,3 +63,4 @@ INCLUDEPATH += \
     item \
     data \
     deck \
+    deck/deck_config \
