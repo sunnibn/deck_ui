@@ -19,8 +19,6 @@ SOURCES += \
     deck/deck_default/deckdisplay.cpp \
     deck/deck_default/deckscreen.cpp \
     deck/deckwindow.cpp \
-    deck/screenbar.cpp \
-    deck/screenwidget.cpp \
     item/clickslider.cpp \
     item/musiclistitem.cpp \
     main.cpp \
@@ -39,8 +37,6 @@ HEADERS += \
     deck/deck_default/deckdisplay.h \
     deck/deck_default/deckscreen.h \
     deck/deckwindow.h \
-    deck/screenbar.h \
-    deck/screenwidget.h \
     item/clickslider.h \
     item/musiclistitem.h \
     data/musicplayer.h \
@@ -58,8 +54,6 @@ FORMS += \
     deck/deck_default/deckdisplay.ui \
     deck/deck_default/deckscreen.ui \
     deck/deckwindow.ui \
-    deck/screenbar.ui \
-    deck/screenwidget.ui \
     item/clickslider.ui \
     item/musiclistitem.ui \
     playerwindow.ui \

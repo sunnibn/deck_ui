@@ -36,8 +36,8 @@ DeckConfigDisplay::~DeckConfigDisplay()
 
 
 //=== config display setup function
-void DeckConfigDisplay::setDisplayContent(int displayNo) {
-    switch (displayNo) {
+void DeckConfigDisplay::setDisplayContent(int displayType) {
+    switch (displayType) {
     case 0:
         this->layout()->addWidget(new MusicPlayerWidget);
         break;

@@ -20,6 +20,8 @@ public:
     explicit DeckConfigScreen(QWidget *parent = nullptr);
     ~DeckConfigScreen();
 
+    int screenIdx;
+
     void renderConfigDisplays(int screenNo);
 
 private:

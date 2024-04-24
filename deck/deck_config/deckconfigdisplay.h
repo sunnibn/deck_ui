@@ -25,9 +25,10 @@ public:
     explicit DeckConfigDisplay(DisplayData d, QWidget *parent = nullptr);
     ~DeckConfigDisplay();
 
+    int displayIdx;
     DeckConfigDisplayBar *bar;
 
-    void setDisplayContent(int displayNo);
+    void setDisplayContent(int displayType);
 
 private:
     Ui::DeckConfigDisplay *ui;
