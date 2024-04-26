@@ -30,13 +30,16 @@ public:
     std::vector<ScreenData> screens;
 
 
+    //=== config directory setup function
     void configDirectory();
 
+    //=== file read & write
     void deckConfigRead();
     void deckConfigWrite();
     void screenFileRead(QString filePath, ScreenData *s);
     void screenFileWrite(int screenIdx);
 
+    //=== data manipulate functions
     void addScreenData();
     void delScreenData(int screenIdx);
     void addDisplayData(int screenIdx);

@@ -2,6 +2,7 @@
 #define DECKSCREEN_H
 
 #include <QWidget>
+#include <vector>
 
 #include "deck/deck_default/deckdisplay.h"
 #include "data/decksetting.h"
@@ -20,7 +21,9 @@ public:
     explicit DeckScreen(QWidget *parent = nullptr);
     ~DeckScreen();
 
-    void renderDisplays(int screenNo);
+    std::vector<DeckDisplay*> DD;
+
+    void renderDisplays(int screenIdx);
 
 private:
     Ui::DeckScreen *ui;

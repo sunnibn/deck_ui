@@ -51,7 +51,9 @@
        <widget class="QWidget" name="leftWidget" native="true"/>
       </item>
       <item>
-       <widget class="QWidget" name="midWidget" native="true"/>
+       <widget class="QWidget" name="midWidget" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+       </widget>
       </item>
       <item>
        <widget class="QWidget" name="rightWidget" native="true">

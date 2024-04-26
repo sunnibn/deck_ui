@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <vector>
-#include "deck/screenwidget.h"
 
 #include "deck/deck_default/deckscreen.h"
 #include "deck/deck_default/deckbar.h"
@@ -29,7 +28,6 @@ public:
     explicit DeckWindow(QWidget *parent = nullptr);
     ~DeckWindow();
 
-    std::vector<ScreenWidget*> SW;
     DeckScreen *deckScreen;
     DeckBar *deckBar;
     DeckConfigScreen *deckConfigScreen;

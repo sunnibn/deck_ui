@@ -1,8 +1,6 @@
 #include "deckwindow.h"
 #include "ui_deckwindow.h"
 
-#include <QThread>
-
 DeckWindow::DeckWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::DeckWindow)
@@ -14,9 +12,14 @@ DeckWindow::DeckWindow(QWidget *parent)
     deckConfigScreen = new DeckConfigScreen();
     deckConfigBar = new DeckConfigBar();
 
+    // screen switching
+    connect(deckBar, &DeckBar::screenSwitchSignal, [this](int screenIdx){
+        this->renderScreen(screenIdx);
+    });
+    // edit & user mode switching
     connect(deckBar, &DeckBar::editModeSignal, [this](){
-        this->renderBar(1);
-        this->renderScreen(1);
+        this->renderBar(-1);
+        this->renderScreen(-1);
     });
     connect(deckConfigBar, &DeckConfigBar::userModeSignal, [this](){
         this->renderBar(0);
@@ -45,10 +48,10 @@ void DeckWindow::renderBar(int barNo) {
         }
     }
     // restore bar
-    if (barNo == 0) {
-        ui->bar->layout()->addWidget(deckBar);
-    } else {
+    if (barNo == -1) {
         ui->bar->layout()->addWidget(deckConfigBar);
+    } else {
+        ui->bar->layout()->addWidget(deckBar);
     }
 }
 
@@ -63,28 +66,10 @@ void DeckWindow::renderScreen(int screenIdx) {
         }
     }
     // restore screen
-    if(screenIdx == 0) {
-        ui->screen->layout()->addWidget(deckScreen);
-    } else {
+    if(screenIdx == -1) {
         ui->screen->layout()->addWidget(deckConfigScreen);
+    } else {
+        deckScreen->renderDisplays(screenIdx);
+        ui->screen->layout()->addWidget(deckScreen);
     }
-    // // remove old
-    // for (int i=0; i < SW.size(); i++) {
-    //     delete SW[i];
-    // }
-    // if (!SW.empty()) SW.clear();
-    // // render new
-    // CONFIG.deckConfigRead();
-    // if (CONFIG.screens.size() > 0) {
-    //     for (int i=0; i < CONFIG.screens[screenIdx].displays.size(); i++) {
-    //         DisplayData d = CONFIG.screens[screenIdx].displays[i];
-    //         ScreenWidget *sw = new ScreenWidget(0, d.x, d.y, d.w, d.h);
-    //         sw->screenIdx = screenIdx;
-    //         sw->displayIdx = i;
-    //         sw->bar->screenIdx = screenIdx;
-    //         sw->bar->displayIdx = i;
-    //         SW.push_back(sw);
-    //         this->layout()->addWidget(sw);
-    //     }
-    // }
 }

@@ -17,17 +17,10 @@ public:
     explicit DeckBar(QWidget *parent = nullptr);
     ~DeckBar();
 
-    void initDeckBar();
-    // void emptyBar();
-
-    void editBtnClick();
-    void addScreenBtnClick();
-    void delScreenBtnClick();
-    void addDisplayBtnClick();
-    void editSaveBtnClick();
-    void editQuitBtnClick();
+    void renderScreensBtn();
 
 signals:
+    void screenSwitchSignal(int screenIdx);
     void editModeSignal();
 
 private slots:
@@ -35,13 +28,6 @@ private slots:
 
 private:
     Ui::DeckBar *ui;
-
-    QPushButton *editBtn;
-    QPushButton *addScreenBtn;
-    QPushButton *delScreenBtn;
-    QPushButton *addDisplayBtn;
-    QPushButton *editSaveBtn;
-    QPushButton *editQuitBtn;
 };
 
 #endif // DECKBAR_H

@@ -14,7 +14,7 @@ DeckSetting::~DeckSetting() {
 
 
 
-//=== directory setting
+//=== config directory setup function
 void DeckSetting::configDirectory() {
     QDir *configDir = new QDir("./config/");
     QDir *screenDir = new QDir("./config/screens/");
@@ -27,7 +27,9 @@ void DeckSetting::configDirectory() {
         instDir->mkpath(".");
 }
 
-//=== deck config
+
+
+//=== file read & write
 void DeckSetting::deckConfigRead() {
     // empty vector screens
     if (!screens.empty()) screens.clear();
@@ -98,7 +100,7 @@ void DeckSetting::screenFileWrite(int screenIdx) {
 
 
 
-//=== functions of edit config data
+//=== data manipulate functions
 void DeckSetting::addScreenData() {
     // create new screen file
     QString screenFilePath = "./config/screens/s";
