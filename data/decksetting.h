@@ -26,7 +26,7 @@ public:
     DeckSetting();
     ~DeckSetting();
 
-    int currScreenIdx;
+    int currScreenIdx = -1;
     std::vector<ScreenData> screens;
 
 

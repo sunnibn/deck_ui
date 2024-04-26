@@ -9,6 +9,7 @@ DeckConfigBar::DeckConfigBar(QWidget *parent)
 {
     ui->setupUi(this);
     this->setStyleSheet("background: black; border: 1px solid lightgray; color: lightgray;");
+    renderScreensBtn();
 }
 
 DeckConfigBar::~DeckConfigBar()
@@ -17,6 +18,23 @@ DeckConfigBar::~DeckConfigBar()
 }
 
 
+
+//=== bar setting function
+void DeckConfigBar::renderScreensBtn() {
+    // empty midwidget
+    if (!ui->midWidget->layout()->isEmpty()) {
+        QLayoutItem *child;
+        while ((child = ui->midWidget->layout()->takeAt(0)) != nullptr) {
+            delete child;
+        }
+    }
+    // fill in screens btn
+    for (int i=0; i < CONFIG.screens.size(); i++) {
+        QPushButton *btn = new QPushButton(".");
+        connect(btn, &QPushButton::clicked, [this, i](){ emit this->screenSwitchSignal(i); });
+        ui->midWidget->layout()->addWidget(btn);
+    }
+}
 
 //=== button slot functions
 void DeckConfigBar::on_saveBtn_clicked() {

@@ -18,7 +18,10 @@ public:
     explicit DeckConfigBar(QWidget *parent = nullptr);
     ~DeckConfigBar();
 
+    void renderScreensBtn();
+
 signals:
+    void screenSwitchSignal(int screenIdx);
     void userModeSignal();
 
 private slots:

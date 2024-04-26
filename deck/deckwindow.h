@@ -34,8 +34,8 @@ public:
     DeckConfigBar *deckConfigBar;
 
 
-    void renderBar(int barNo);
-    void renderScreen(int screenIdx);
+    void renderBar(bool mode);
+    void renderScreen(bool mode, int screenIdx);
 
 private:
     Ui::DeckWindow *ui;
