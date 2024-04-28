@@ -23,7 +23,7 @@ public:
 
     std::vector<DeckConfigDisplay*> DD;
 
-    void renderConfigDisplays(int screenIdx);
+    void renderConfigScreen();
 
 private:
     Ui::DeckConfigScreen *ui;

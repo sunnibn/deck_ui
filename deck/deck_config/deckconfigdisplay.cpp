@@ -1,7 +1,7 @@
 #include "deckconfigdisplay.h"
 #include "ui_deckconfigdisplay.h"
 
-DeckConfigDisplay::DeckConfigDisplay(QWidget *parent)
+DeckConfigDisplay::DeckConfigDisplay(int displayIdx, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::DeckConfigDisplay)
 {
@@ -10,11 +10,13 @@ DeckConfigDisplay::DeckConfigDisplay(QWidget *parent)
     this->move(0,0);
     this->resize(100,100);
 
-    bar = new DeckConfigDisplayBar(this);
+    this->displayIdx = displayIdx;
+
+    bar = new DeckConfigDisplayBar(this->displayIdx, this);
     ui->gridLayout->addWidget(bar, 0,0,1,1, Qt::AlignBottom);
 }
 
-DeckConfigDisplay::DeckConfigDisplay(DisplayData d, QWidget *parent)
+DeckConfigDisplay::DeckConfigDisplay(int displayIdx, DisplayData d, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::DeckConfigDisplay)
 {
@@ -24,7 +26,9 @@ DeckConfigDisplay::DeckConfigDisplay(DisplayData d, QWidget *parent)
     this->resize(d.w, d.h);
     setDisplayContent(0);
 
-    bar = new DeckConfigDisplayBar(this);
+    this->displayIdx = displayIdx;
+
+    bar = new DeckConfigDisplayBar(this->displayIdx, this);
     ui->gridLayout->addWidget(bar, 0,0,1,1, Qt::AlignBottom);
 }
 

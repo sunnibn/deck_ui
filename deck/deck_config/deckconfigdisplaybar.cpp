@@ -1,7 +1,10 @@
 #include "deckconfigdisplaybar.h"
 #include "ui_deckconfigdisplaybar.h"
 
-DeckConfigDisplayBar::DeckConfigDisplayBar(QWidget *parent)
+#include <iostream>
+#include "deck/deck_config/deckconfigscreen.h"
+
+DeckConfigDisplayBar::DeckConfigDisplayBar(int displayIdx, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::DeckConfigDisplayBar)
 {
@@ -9,6 +12,7 @@ DeckConfigDisplayBar::DeckConfigDisplayBar(QWidget *parent)
 
     ui->moveBtn->installEventFilter(this);
     ui->resizeBtn->installEventFilter(this);
+    this->displayIdx = displayIdx;
 
     this->setStyleSheet("border:1px solid lightgray; background: gray;");
 }
@@ -73,7 +77,10 @@ bool DeckConfigDisplayBar::eventFilter(QObject *o, QEvent *e) {
 
 //=== button slots
 void DeckConfigDisplayBar::on_removeBtn_clicked() {
-
+    std::cout << displayIdx << std::endl;
+    // emit delDisplaySignal(this->displayIdx);
+    CONFIG.delDisplayData(CONFIG.currScreenIdx, this->displayIdx);
+    // ((DeckConfigScreen*)this->parent())->renderConfigDisplays(CONFIG.currScreenIdx);
 }
 void DeckConfigDisplayBar::on_settingBtn_clicked() {
 

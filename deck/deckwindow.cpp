@@ -12,24 +12,20 @@ DeckWindow::DeckWindow(QWidget *parent)
     deckConfigScreen = new DeckConfigScreen();
     deckConfigBar = new DeckConfigBar();
 
-    // screen switching
-    connect(deckBar, &DeckBar::screenSwitchSignal, [this](int screenIdx){
-        this->renderScreen(false, screenIdx);
-    });
-    connect(deckConfigBar, &DeckConfigBar::screenSwitchSignal, [this](int screenIdx){
-        this->renderScreen(true, screenIdx);
-    });
     // edit & user mode switching
     connect(deckBar, &DeckBar::editModeSignal, [this](){
         this->renderBar(true);
-        this->renderScreen(true, CONFIG.currScreenIdx);
+        this->renderScreen(true);
     });
     connect(deckConfigBar, &DeckConfigBar::userModeSignal, [this](){
         this->renderBar(false);
-        this->renderScreen(false, CONFIG.currScreenIdx);
+        this->renderScreen(false);
     });
 
-    renderBar(0);
+
+
+    this->renderBar(false);
+    this->renderScreen(false);
 }
 
 DeckWindow::~DeckWindow()
@@ -51,14 +47,16 @@ void DeckWindow::renderBar(bool mode) {
     }
     // restore bar
     if (mode) {
+        deckConfigBar->renderScreensBtn();
         ui->bar->layout()->addWidget(deckConfigBar);
     } else {
+        deckBar->renderScreensBtn();
         ui->bar->layout()->addWidget(deckBar);
     }
 }
 
 //=== screen functions
-void DeckWindow::renderScreen(bool mode, int screenIdx) {
+void DeckWindow::renderScreen(bool mode) {
     // empty screen
     if (!ui->screen->layout()->isEmpty()) {
         QLayoutItem *child;
@@ -68,14 +66,11 @@ void DeckWindow::renderScreen(bool mode, int screenIdx) {
         }
     }
     // restore screen
-    CONFIG.currScreenIdx = screenIdx;
-    if (screenIdx == -1) {
-        //
-    } else if (mode) {
-        deckConfigScreen->renderConfigDisplays(screenIdx);
+    if (mode) {
+        deckConfigScreen->renderConfigScreen();
         ui->screen->layout()->addWidget(deckConfigScreen);
     } else {
-        deckScreen->renderDisplays(screenIdx);
+        deckScreen->renderScreen();
         ui->screen->layout()->addWidget(deckScreen);
     }
 }

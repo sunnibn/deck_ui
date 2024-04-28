@@ -1,11 +1,15 @@
 #ifndef DECKSETTING_H
 #define DECKSETTING_H
 
+#include <QObject>
+
 #include <vector>
 
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
+
+
 
 struct InstData {       // instance data
     int type;
@@ -20,10 +24,13 @@ struct ScreenData {     // screen to show on deck
 };
 
 
-class DeckSetting
+
+class DeckSetting : public QObject
 {
+    Q_OBJECT
+
 public:
-    DeckSetting();
+    explicit DeckSetting(QObject *parent = nullptr);
     ~DeckSetting();
 
     int currScreenIdx = -1;
@@ -36,14 +43,20 @@ public:
     //=== file read & write
     void deckConfigRead();
     void deckConfigWrite();
-    void screenFileRead(QString filePath, ScreenData *s);
+    void screenFileRead(QString screenPath, ScreenData *s);
     void screenFileWrite(int screenIdx);
 
     //=== data manipulate functions
     void addScreenData();
     void delScreenData(int screenIdx);
+    void switchScreen(int screenIdx);
+
     void addDisplayData(int screenIdx);
     void delDisplayData(int screenIdx, int displayIdx);
+
+signals:
+    void renderBarSignal();
+    void renderScreenSignal();
 };
 
 #endif // DECKSETTING_H

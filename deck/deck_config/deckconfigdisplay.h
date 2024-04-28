@@ -21,8 +21,8 @@ class DeckConfigDisplay : public QWidget
     Q_OBJECT
 
 public:
-    explicit DeckConfigDisplay(QWidget *parent = nullptr);
-    explicit DeckConfigDisplay(DisplayData d, QWidget *parent = nullptr);
+    explicit DeckConfigDisplay(int displayIdx, QWidget *parent = nullptr);
+    explicit DeckConfigDisplay(int displayIdx, DisplayData d, QWidget *parent = nullptr);
     ~DeckConfigDisplay();
 
     int displayIdx;

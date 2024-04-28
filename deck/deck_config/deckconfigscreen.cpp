@@ -1,11 +1,16 @@
 #include "deckconfigscreen.h"
 #include "ui_deckconfigscreen.h"
 
+#include <iostream>
+
 DeckConfigScreen::DeckConfigScreen(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::DeckConfigScreen)
 {
     ui->setupUi(this);
+    connect(&CONFIG, &DeckSetting::renderScreenSignal, [this](){
+        this->renderConfigScreen();
+    });
 }
 
 DeckConfigScreen::~DeckConfigScreen()
@@ -16,7 +21,7 @@ DeckConfigScreen::~DeckConfigScreen()
 
 
 //=== render config displays
-void DeckConfigScreen::renderConfigDisplays(int screenIdx) {
+void DeckConfigScreen::renderConfigScreen() {
     // empty the screen
     for (int i=0; i < DD.size(); i++) {
         DD[i]->setParent(nullptr);
@@ -24,11 +29,13 @@ void DeckConfigScreen::renderConfigDisplays(int screenIdx) {
     }
     if (!DD.empty()) { DD.clear(); }
     // show displays
-    if(CONFIG.screens.size() > 0) {
-        for (int i=0; i < CONFIG.screens[screenIdx].displays.size(); i++) {
-            DisplayData d = CONFIG.screens[screenIdx].displays[i];
-            DeckConfigDisplay *disp = new DeckConfigDisplay(d);
+    int idx = CONFIG.currScreenIdx;
+    if(CONFIG.screens.size() > 0 && idx != -1) {
+        for (int i=0; i < CONFIG.screens[idx].displays.size(); i++) {
+            DisplayData d = CONFIG.screens[idx].displays[i];
+            DeckConfigDisplay *disp = new DeckConfigDisplay(i, d);
             disp->setParent(this);
+            disp->show();
             DD.push_back(disp);
         }
     }

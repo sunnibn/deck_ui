@@ -18,11 +18,16 @@ class DeckConfigDisplayBar : public QWidget
     Q_OBJECT
 
 public:
-    explicit DeckConfigDisplayBar(QWidget *parent = nullptr);
+    explicit DeckConfigDisplayBar(int displayIdx, QWidget *parent = nullptr);
     ~DeckConfigDisplayBar();
+
+    int displayIdx;
 
 protected:
     bool eventFilter(QObject *o, QEvent *e);
+
+signals:
+    void delDisplaySignal(int displayIdx);
 
 private slots:
     void on_removeBtn_clicked();

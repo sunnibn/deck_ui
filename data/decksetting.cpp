@@ -2,7 +2,7 @@
 
 #include "decksetting.h"
 
-DeckSetting::DeckSetting() {
+DeckSetting::DeckSetting(QObject *parent) : QObject(parent) {
     // directory & deck config init
     configDirectory();
     deckConfigRead();
@@ -31,65 +31,58 @@ void DeckSetting::configDirectory() {
 
 //=== file read & write
 void DeckSetting::deckConfigRead() {
-    // empty vector screens
+    // empty screens
     if (!screens.empty()) screens.clear();
-    // deck_config file open stream
+
+    // read in deck_config file
     QFile *deckConfig = new QFile("./config/deck_config");
-    if (!deckConfig->open(QIODevice::ReadWrite | QIODevice::Text))  // will create if not exist
+    if (!deckConfig->open(QIODevice::ReadOnly | QIODevice::Text))  // will create if not exist
         return;
-    // read in deck_config data
     QTextStream in(deckConfig);
     while (!in.atEnd()) {
         QString screenPath = in.readLine();
         ScreenData s;
-        s.path = screenPath;
-        s.active = true;
         screenFileRead(screenPath , &s);
         screens.push_back(s);
     }
-    // deck_config close file
     deckConfig->close();
 }
 void DeckSetting::deckConfigWrite() {
+    // with current CONFIG data -> write out deck_config file
     QFile *deckConfig = new QFile("./config/deck_config");
-    // deck_config file open stream
-    if (!deckConfig->open(QIODevice::ReadWrite | QIODevice::Text))  // will create if not exist
+    if (!deckConfig->open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))  // will create if not exist
         return;
-    // write out deck_config data
     QTextStream out(deckConfig);
     for (int i=0; i<screens.size(); i++) {
         out << screens[i].path << '\n';
     }
-    // deck_config close file
     deckConfig->close();
 }
 
-void DeckSetting::screenFileRead(QString filePath, ScreenData *s) {
+void DeckSetting::screenFileRead(QString screenPath, ScreenData *s) {
     // empty screen data's displays
     if (!s->displays.empty()) s->displays.clear();
-    // screen file open
-    QFile *screenFile = new QFile(filePath);
+    // read in screen file data
+    s->path = screenPath;
+    QFile *screenFile = new QFile(screenPath);
     if (!screenFile->open(QIODevice::ReadOnly | QIODevice::Text))
         return;
-    // read in screen file data
     QTextStream in(screenFile);
     while (!in.atEnd()) {
         DisplayData d;
-        // display coord data
         QStringList coord = in.readLine().split(u' ', Qt::SkipEmptyParts);
         int *pCoord[4] = {&d.x, &d.y, &d.w, &d.h};
         for (int i=0; i < coord.size(); i++) { *pCoord[i] = coord[i].toInt(); }
-        // push display data -> screen
         s->displays.push_back(d);
     }
+    s->active = true;
     screenFile->close();
 }
 void DeckSetting::screenFileWrite(int screenIdx) {
-    // screen file open
-    QFile *screenFile = new QFile(screens[screenIdx].path);
-    if (!screenFile->open(QIODevice::ReadWrite | QIODevice::Text))
-        return;
     // write out screen file data
+    QFile *screenFile = new QFile(screens[screenIdx].path);
+    if (!screenFile->open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))
+        return;
     QTextStream out(screenFile);
     for (int i=0; i < screens[screenIdx].displays.size(); i++) {
         DisplayData d = screens[screenIdx].displays[i];
@@ -102,29 +95,53 @@ void DeckSetting::screenFileWrite(int screenIdx) {
 
 //=== data manipulate functions
 void DeckSetting::addScreenData() {
-    // create new screen file
+    // create new screen file ('s + number' format)
     QString screenFilePath = "./config/screens/s";
+    int screenFileNo = 0;
+    while (screenFileNo < 10) {
+        QFile sfile(screenFilePath + QString::number(screenFileNo));
+        if (!sfile.exists()) {
+            screenFilePath = screenFilePath + QString::number(screenFileNo);
+            break;
+        }
+        screenFileNo++;
+    }
+    if (screenFileNo >= 10) return;
+
     QFile *screenFile = new QFile(screenFilePath);
-    if (!screenFile->open(QIODevice::ReadWrite | QIODevice::Text))
+    if (!screenFile->open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))
         return;
     screenFile->close();
+
     // add screen in vector:screens
     ScreenData s;
     s.path = screenFilePath;
     s.active = true;
     screens.push_back(s);
-    // renew deck_config
+
+    // save & emit signals
     this->deckConfigWrite();
+    currScreenIdx = screens.size() - 1;
+    emit renderBarSignal();
+    emit renderScreenSignal();
 }
 void DeckSetting::delScreenData(int screenIdx) {
-    // remove screen file
+    // remove screen file & data
     QFile *screenFile = new QFile(screens[screenIdx].path);
     screenFile->remove();
-    // remove screen from screens
     screens.erase(screens.begin() + screenIdx);
-    // renew deck_config
+
+    // save & emit signals
     this->deckConfigWrite();
+    currScreenIdx = screens.size() - 1;
+    emit renderBarSignal();
+    emit renderScreenSignal();
 }
+void DeckSetting::switchScreen(int screenIdx) {
+    currScreenIdx = screenIdx;
+    emit renderScreenSignal();
+}
+
 void DeckSetting::addDisplayData(int screenIdx) {
     screens[screenIdx].displays.push_back({ 0,0,100,100 });
     this->screenFileWrite(screenIdx);

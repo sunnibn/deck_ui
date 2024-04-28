@@ -35,7 +35,7 @@ public:
 
 
     void renderBar(bool mode);
-    void renderScreen(bool mode, int screenIdx);
+    void renderScreen(bool mode);
 
 private:
     Ui::DeckWindow *ui;
