@@ -21,7 +21,6 @@ public:
     void renderScreensBtn();
 
 signals:
-    void screenSwitchSignal(int screenIdx);
     void userModeSignal();
 
 private slots:

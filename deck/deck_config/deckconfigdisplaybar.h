@@ -26,9 +26,6 @@ public:
 protected:
     bool eventFilter(QObject *o, QEvent *e);
 
-signals:
-    void delDisplaySignal(int displayIdx);
-
 private slots:
     void on_removeBtn_clicked();
     void on_settingBtn_clicked();

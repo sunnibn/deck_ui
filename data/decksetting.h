@@ -53,6 +53,7 @@ public:
 
     void addDisplayData(int screenIdx);
     void delDisplayData(int screenIdx, int displayIdx);
+    void moveDisplay(int screenIdx, int displayIdx, DisplayData d);
 
 signals:
     void renderBarSignal();

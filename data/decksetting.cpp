@@ -144,9 +144,19 @@ void DeckSetting::switchScreen(int screenIdx) {
 
 void DeckSetting::addDisplayData(int screenIdx) {
     screens[screenIdx].displays.push_back({ 0,0,100,100 });
+
     this->screenFileWrite(screenIdx);
+    emit renderScreenSignal();
 }
 void DeckSetting::delDisplayData(int screenIdx, int displayIdx) {
     screens[screenIdx].displays.erase(screens[screenIdx].displays.begin() + displayIdx);
+
     this->screenFileWrite(screenIdx);
+    emit renderScreenSignal();
+}
+void DeckSetting::moveDisplay(int screenIdx, int displayIdx, DisplayData d) {
+    screens[screenIdx].displays[displayIdx] = d;
+
+    this->screenFileWrite(screenIdx);
+    // emit renderScreenSignal();
 }

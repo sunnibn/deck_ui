@@ -2,7 +2,6 @@
 #include "ui_deckconfigdisplaybar.h"
 
 #include <iostream>
-#include "deck/deck_config/deckconfigscreen.h"
 
 DeckConfigDisplayBar::DeckConfigDisplayBar(int displayIdx, QWidget *parent)
     : QWidget(parent)
@@ -44,7 +43,9 @@ bool DeckConfigDisplayBar::eventFilter(QObject *o, QEvent *e) {
             break;
         case QEvent::MouseButtonRelease:
             if (mE->button() == Qt::LeftButton) {
-                this->parentWidget()->move(pw + x-px, ph + y-py);
+                QWidget *q = this->parentWidget();
+                q->move(pw + x-px, ph + y-py);
+                CONFIG.moveDisplay(CONFIG.currScreenIdx, this->displayIdx, {q->x(), q->y(), q->width(), q->height()});
             }
             break;
         }
@@ -67,7 +68,9 @@ bool DeckConfigDisplayBar::eventFilter(QObject *o, QEvent *e) {
             break;
         case QEvent::MouseButtonRelease:
             if (mE->button() == Qt::LeftButton) {
-                this->parentWidget()->resize(pw + x-px, ph + y-py);
+                QWidget *q = this->parentWidget();
+                q->resize(pw + x-px, ph + y-py);
+                CONFIG.moveDisplay(CONFIG.currScreenIdx, this->displayIdx, {q->x(), q->y(), q->width(), q->height()});
             }
             break;
         }
@@ -77,10 +80,7 @@ bool DeckConfigDisplayBar::eventFilter(QObject *o, QEvent *e) {
 
 //=== button slots
 void DeckConfigDisplayBar::on_removeBtn_clicked() {
-    std::cout << displayIdx << std::endl;
-    // emit delDisplaySignal(this->displayIdx);
     CONFIG.delDisplayData(CONFIG.currScreenIdx, this->displayIdx);
-    // ((DeckConfigScreen*)this->parent())->renderConfigDisplays(CONFIG.currScreenIdx);
 }
 void DeckConfigDisplayBar::on_settingBtn_clicked() {
 
