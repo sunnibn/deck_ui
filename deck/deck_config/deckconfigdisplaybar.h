@@ -22,6 +22,7 @@ public:
     ~DeckConfigDisplayBar();
 
     int displayIdx;
+    bool settingFlag = false;
 
 protected:
     bool eventFilter(QObject *o, QEvent *e);

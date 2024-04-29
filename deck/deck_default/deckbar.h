@@ -3,7 +3,9 @@
 
 #include <QWidget>
 #include <QPushButton>
-// #include <deck/deckwindow.h>
+#include <vector>
+
+#include "item/barscreenbutton.h"
 
 namespace Ui {
 class DeckBar;
@@ -16,6 +18,8 @@ class DeckBar : public QWidget
 public:
     explicit DeckBar(QWidget *parent = nullptr);
     ~DeckBar();
+
+    std::vector<BarScreenButton*> BB;
 
     void renderScreensBtn();
 

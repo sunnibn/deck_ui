@@ -2,6 +2,9 @@
 #define DECKCONFIGBAR_H
 
 #include <QWidget>
+#include <vector>
+
+#include "item/barscreenbutton.h"
 #include "data/decksetting.h"
 
 extern DeckSetting CONFIG;
@@ -17,6 +20,8 @@ class DeckConfigBar : public QWidget
 public:
     explicit DeckConfigBar(QWidget *parent = nullptr);
     ~DeckConfigBar();
+
+    std::vector<BarScreenButton*> BB;
 
     void renderScreensBtn();
 

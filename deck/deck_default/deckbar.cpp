@@ -13,7 +13,6 @@ DeckBar::DeckBar(QWidget *parent)
     , ui(new Ui::DeckBar)
 {
     ui->setupUi(this);
-    this->setStyleSheet("background: black; border: 1px solid lightgray; color: lightgray;");
 }
 
 DeckBar::~DeckBar()
@@ -26,17 +25,28 @@ DeckBar::~DeckBar()
 //=== bar setting functions
 void DeckBar::renderScreensBtn() {
     // empty midwidget
-    if (!ui->midWidget->layout()->isEmpty()) {
-        QLayoutItem *child;
-        while ((child = ui->midWidget->layout()->takeAt(0)) != nullptr) {
-            child->widget()->setParent(nullptr);
-            delete child;
-        }
+    // if (!ui->midWidget->layout()->isEmpty()) {
+    //     QLayoutItem *child;
+    //     while ((child = ui->midWidget->layout()->takeAt(0)) != nullptr) {
+    //         child->widget()->setParent(nullptr);
+    //         delete child;
+    //     }
+    // }
+    for (int i=0; i < BB.size(); i++) {
+        BB[i]->setParent(nullptr);
+        delete BB[i];
     }
+    if (!BB.empty()) { BB.clear(); }
     // fill in screens btn
     for (int i=0; i < CONFIG.screens.size(); i++) {
-        QPushButton *btn = new QPushButton(".");
-        connect(btn, &QPushButton::clicked, [i](){ CONFIG.switchScreen(i); });
+        BarScreenButton *btn = new BarScreenButton(this);
+        connect(btn, &QPushButton::clicked, [this, btn, i](){
+            if (0 <= CONFIG.currScreenIdx && CONFIG.currScreenIdx < BB.size())
+                this->BB[CONFIG.currScreenIdx]->switchActive(false);
+            CONFIG.switchScreen(i);
+            btn->switchActive(true);
+        });
+        BB.push_back(btn);
         ui->midWidget->layout()->addWidget(btn);
     }
 }

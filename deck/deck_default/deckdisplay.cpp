@@ -8,9 +8,9 @@ DeckDisplay::DeckDisplay(QWidget *parent)
     , ui(new Ui::DeckDisplay)
 {
     ui->setupUi(this);
-    this->setStyleSheet("border: 1px solid lightgray; background: black;");
     this->move(0,0);
     this->resize(100,100);
+    ui->widget->setStyleSheet("QWidget#widget{ background: black; border: 1px solid lightgray; }");
 }
 
 DeckDisplay::DeckDisplay(DisplayData d, QWidget *parent)
@@ -18,9 +18,10 @@ DeckDisplay::DeckDisplay(DisplayData d, QWidget *parent)
     , ui(new Ui::DeckDisplay)
 {
     ui->setupUi(this);
-    this->setStyleSheet("border: 1px solid lightgray; background: black;");
     this->move(d.x, d.y);
     this->resize(d.w, d.h);
+    ui->widget->setStyleSheet("QWidget#widget{ background: black; border: 1px solid lightgray; }");
+
     setDisplayContent(0);
 }
 
@@ -32,13 +33,13 @@ DeckDisplay::~DeckDisplay()
 
 
 //=== display setup function
-void DeckDisplay::setDisplayContent(int displayNo) {
-    switch (displayNo) {
+void DeckDisplay::setDisplayContent(int displayType) {
+    switch (displayType) {
     case 0:
-        this->layout()->addWidget(new MusicPlayerWidget);
+        ui->widget->layout()->addWidget(new MusicPlayerWidget);
         break;
     case 1:
-        this->layout()->addWidget(new MusicFileSystemWidget);
+        ui->widget->layout()->addWidget(new MusicFileSystemWidget);
         break;
     }
 }

@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow#DeckWindow {
-	background: rgb(52,50,64);
+	background: rgb(50,50,50);/*rgb(52,50,64);*/
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

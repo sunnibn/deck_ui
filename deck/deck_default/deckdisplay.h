@@ -28,7 +28,7 @@ public:
     explicit DeckDisplay(DisplayData d, QWidget *parent = nullptr);
     ~DeckDisplay();
 
-    void setDisplayContent(int displayNo);
+    void setDisplayContent(int displayType);
 
 private:
     Ui::DeckDisplay *ui;

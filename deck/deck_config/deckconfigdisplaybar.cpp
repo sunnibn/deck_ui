@@ -12,6 +12,7 @@ DeckConfigDisplayBar::DeckConfigDisplayBar(int displayIdx, QWidget *parent)
     ui->moveBtn->installEventFilter(this);
     ui->resizeBtn->installEventFilter(this);
     this->displayIdx = displayIdx;
+    ui->settingWidget->setVisible(this->settingFlag);
 
     this->setStyleSheet("border:1px solid lightgray; background: gray;");
 }
@@ -83,5 +84,6 @@ void DeckConfigDisplayBar::on_removeBtn_clicked() {
     CONFIG.delDisplayData(CONFIG.currScreenIdx, this->displayIdx);
 }
 void DeckConfigDisplayBar::on_settingBtn_clicked() {
-
+    this->settingFlag = !this->settingFlag;
+    ui->settingWidget->setVisible(this->settingFlag);
 }
