@@ -53,7 +53,7 @@ void DeckSetting::deckConfigWrite() {
     if (!deckConfig->open(QIODevice::ReadWrite | QIODevice::Truncate | QIODevice::Text))  // will create if not exist
         return;
     QTextStream out(deckConfig);
-    for (int i=0; i<screens.size(); i++) {
+    for (int i=0; i < screens.size(); i++) {
         out << screens[i].path << '\n';
     }
     deckConfig->close();
@@ -71,7 +71,7 @@ void DeckSetting::screenFileRead(QString screenPath, ScreenData *s) {
     while (!in.atEnd()) {
         DisplayData d;
         QStringList coord = in.readLine().split(u' ', Qt::SkipEmptyParts);
-        int *pCoord[4] = {&d.x, &d.y, &d.w, &d.h};
+        int *pCoord[5] = {&d.type, &d.x, &d.y, &d.w, &d.h};
         for (int i=0; i < coord.size(); i++) { *pCoord[i] = coord[i].toInt(); }
         s->displays.push_back(d);
     }
@@ -86,7 +86,7 @@ void DeckSetting::screenFileWrite(int screenIdx) {
     QTextStream out(screenFile);
     for (int i=0; i < screens[screenIdx].displays.size(); i++) {
         DisplayData d = screens[screenIdx].displays[i];
-        out << d.x <<' '<< d.y <<' '<< d.w <<' '<< d.h << '\n';
+        out << d.type <<' '<< d.x <<' '<< d.y <<' '<< d.w <<' '<< d.h << '\n';
     }
     screenFile->close();
 }
@@ -143,7 +143,7 @@ void DeckSetting::switchScreen(int screenIdx) {
 }
 
 void DeckSetting::addDisplayData(int screenIdx) {
-    screens[screenIdx].displays.push_back({ 0,0,100,100 });
+    screens[screenIdx].displays.push_back({ 0, 0,0,100,100 });
 
     this->screenFileWrite(screenIdx);
     emit renderScreenSignal();
@@ -155,8 +155,8 @@ void DeckSetting::delDisplayData(int screenIdx, int displayIdx) {
     emit renderScreenSignal();
 }
 void DeckSetting::moveDisplay(int screenIdx, int displayIdx, DisplayData d) {
+    d.type = screens[screenIdx].displays[displayIdx].type;
     screens[screenIdx].displays[displayIdx] = d;
 
     this->screenFileWrite(screenIdx);
-    // emit renderScreenSignal();
 }

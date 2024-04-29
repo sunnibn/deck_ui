@@ -23,9 +23,8 @@ DeckConfigDisplay::DeckConfigDisplay(int displayIdx, DisplayData d, QWidget *par
     ui->setupUi(this);
     this->move(d.x, d.y);
     this->resize(d.w, d.h);
+    setDisplayContent(d.type);
     ui->widget->setStyleSheet("QWidget#widget{ background: black; border: 1px solid lightgray; }");
-
-    setDisplayContent(0);
 
     this->displayIdx = displayIdx;
 

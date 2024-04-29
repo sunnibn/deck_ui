@@ -15,6 +15,7 @@ struct InstData {       // instance data
     int type;
 };
 struct DisplayData {    // each displays on screen
+    int type;
     int x, y, w, h;
 };
 struct ScreenData {     // screen to show on deck

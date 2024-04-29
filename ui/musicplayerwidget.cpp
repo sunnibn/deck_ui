@@ -15,6 +15,8 @@ MusicPlayerWidget::MusicPlayerWidget(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->fileButton->setVisible(false);
+
     // init title
     ui->titleLabel->setText("-");
     // init bar
@@ -32,6 +34,7 @@ MusicPlayerWidget::~MusicPlayerWidget()
 //=== change functions - slots connect
 
 void MusicPlayerWidget::mediaChange() {
+    ui->titleLabel->setText(MP.mFile.fileName());
     // MP.loadMeta();
 }
 void MusicPlayerWidget::durChange(qint64 duration) {    // music player duration change -> affect slider, label.

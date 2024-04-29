@@ -12,7 +12,9 @@ DeckConfigDisplayBar::DeckConfigDisplayBar(int displayIdx, QWidget *parent)
     ui->moveBtn->installEventFilter(this);
     ui->resizeBtn->installEventFilter(this);
     this->displayIdx = displayIdx;
+
     ui->settingWidget->setVisible(this->settingFlag);
+    ui->settingBtn->setVisible(false);
 
     this->setStyleSheet("border:1px solid lightgray; background: gray;");
 }
@@ -46,7 +48,10 @@ bool DeckConfigDisplayBar::eventFilter(QObject *o, QEvent *e) {
             if (mE->button() == Qt::LeftButton) {
                 QWidget *q = this->parentWidget();
                 q->move(pw + x-px, ph + y-py);
-                CONFIG.moveDisplay(CONFIG.currScreenIdx, this->displayIdx, {q->x(), q->y(), q->width(), q->height()});
+                CONFIG.moveDisplay(
+                    CONFIG.currScreenIdx,
+                    this->displayIdx,
+                    {0, q->x(), q->y(), q->width(), q->height()});
             }
             break;
         }
@@ -71,7 +76,10 @@ bool DeckConfigDisplayBar::eventFilter(QObject *o, QEvent *e) {
             if (mE->button() == Qt::LeftButton) {
                 QWidget *q = this->parentWidget();
                 q->resize(pw + x-px, ph + y-py);
-                CONFIG.moveDisplay(CONFIG.currScreenIdx, this->displayIdx, {q->x(), q->y(), q->width(), q->height()});
+                CONFIG.moveDisplay(
+                    CONFIG.currScreenIdx,
+                    this->displayIdx,
+                    {0, q->x(), q->y(), q->width(), q->height()});
             }
             break;
         }

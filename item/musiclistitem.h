@@ -22,6 +22,9 @@ public:
 
     void setItemStyle();
 
+protected:
+    bool eventFilter(QObject *o, QEvent *e);
+
 private:
     Ui::MusicListItem *ui;
 

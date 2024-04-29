@@ -143,16 +143,16 @@ QPushButton:hover {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="exitBtn">
+          <widget class="QPushButton" name="saveBtn">
            <property name="text">
-            <string>Exit</string>
+            <string>Save</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="saveBtn">
+          <widget class="QPushButton" name="exitBtn">
            <property name="text">
-            <string>Save</string>
+            <string>Exit</string>
            </property>
           </widget>
          </item>

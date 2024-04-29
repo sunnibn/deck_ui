@@ -87,14 +87,14 @@ QPushButton#backButton::hover {
      <item>
       <widget class="QScrollArea" name="scrollArea">
        <property name="styleSheet">
-        <string notr="true">QScrollArea {
+        <string notr="true">QScrollArea#scrollArea {
 	background: transparent;
 	border: 1px solid lightgray;
 }
-QScrollArea&gt;QWidget&gt;QWidget {
+QWidget#scrollWidget {
 	background: transparent;
 }
-QWidget&gt;QWidget&gt;QScrollBar {
+QScrollBar {
 	background: transparent;
 	color: lightgray;
 }</string>
