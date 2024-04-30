@@ -7,7 +7,7 @@ MusicPlayer::MusicPlayer() {
 
     audioVolume = audioOutput->volume();
 
-    loadList("../storage");
+    loadList("..");
 }
 
 MusicPlayer::~MusicPlayer() {
